@@ -18,13 +18,13 @@ const getWeather = async function getCurrentWeatherFromAPI(city) {
     return weatherData;
 }
 
-const saveData = function processWeatherDataFromAPI(Data) {
+const saveData = function processWeatherDataFromAPI(data) {
     // Weather city name has already been saved
-    weather.country = Data.sys.country;
-    weather.temp = Data.main.temp;
-    weather.feelslike = Data.main.feels_like;
-    weather.main = Data.weather[0].main;
-    weather.description = Data.weather[0].description;
+    weather.country = data.sys.country;
+    weather.temp = data.main.temp;
+    weather.feelslike = data.main.feels_like;
+    weather.main = data.weather[0].main;
+    weather.description = data.weather[0].description;
 
     return weather;
 }
