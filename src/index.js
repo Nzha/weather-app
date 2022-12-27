@@ -2,8 +2,8 @@ import './style.css';
 
 let weather = {};
 
-const getWeather = async function getCurrentWeatherFromAPI() {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=Dubai&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
+const getWeather = async function getCurrentWeatherFromAPI(city) {
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
     const geocode = await response.json();
     const lat = geocode[0].lat;
     const lon = geocode[0].lon;
@@ -29,12 +29,12 @@ const saveData = function processWeatherDataFromAPI(Data) {
     return weather;
 }
 
-const getAndSaveData = async function getAndSaveWeatherData() {
-    const getWeatherData = await getWeather();
+const getAndSaveData = async function getAndSaveWeatherData(city) {
+    const getWeatherData = await getWeather(city);
     const saveWeatherData = await saveData(getWeatherData);
 
     console.log(saveWeatherData);
     return saveWeatherData;
 }
 
-getAndSaveData();
+getAndSaveData('Dubai');
