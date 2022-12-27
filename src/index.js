@@ -19,7 +19,7 @@ const getWeather = async function getCurrentWeatherFromAPI(city) {
 }
 
 const saveData = function processWeatherDataFromAPI(Data) {
-    // City name has already been saved
+    // Weather city name has already been saved
     weather.country = Data.sys.country;
     weather.temp = Data.main.temp;
     weather.feelslike = Data.main.feels_like;
