@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    background-color: #eeeeee;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.search-btn {\n    background-color: #e0e0e0;\n    width: 1.875rem;\n    height: 1.875rem;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n.details {\n    grid-area: details;\n    background-color: #f7f7f7;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;;GAEG;;AAEH;IACI,iCAAiC;CACpC;mCACkC;IAC/B,gBAAgB;CACnB,aAAa;CACb,aAAa;AACd;;AAEA;IACI,sBAAsB;AAC1B;AACA;IACI,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,2DAA2D;IAC3D;;;;cAIU;IACV,aAAa;IACb,yBAAyB;IACzB,SAAS;CACZ,UAAU;AACX;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,yBAAyB;IACzB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,iBAAiB;IACjB,SAAS;AACb;;AAEA;IACI,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,eAAe;AACnB;;AAEA;IACI,UAAU;IACV,mBAAmB;IACnB,kBAAkB;IAClB,gBAAgB;IAChB,YAAY;IACZ,uBAAuB;IACvB,iBAAiB;IACjB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,eAAe;IACf,gBAAgB;IAChB,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,yBAAyB;AAC7B;;AAEA;IACI,kBAAkB;IAClB,yBAAyB;AAC7B;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI;QACI,UAAU;IACd;AACJ","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    background-color: #eeeeee;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.search-btn {\n    background-color: #e0e0e0;\n    width: 1.875rem;\n    height: 1.875rem;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n.details {\n    grid-area: details;\n    background-color: #f7f7f7;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    background-color: #eeeeee;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.search-btn {\n    background-color: #e0e0e0;\n    width: 1.875rem;\n    height: 1.875rem;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n}\n\n.wind-container,\n.humidity-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;;GAEG;;AAEH;IACI,iCAAiC;CACpC;mCACkC;IAC/B,gBAAgB;CACnB,aAAa;CACb,aAAa;AACd;;AAEA;IACI,sBAAsB;AAC1B;AACA;IACI,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,2DAA2D;IAC3D;;;;cAIU;IACV,aAAa;IACb,yBAAyB;IACzB,SAAS;CACZ,UAAU;AACX;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,yBAAyB;IACzB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,iBAAiB;IACjB,SAAS;AACb;;AAEA;IACI,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,eAAe;AACnB;;AAEA;IACI,UAAU;IACV,mBAAmB;IACnB,kBAAkB;IAClB,gBAAgB;IAChB,YAAY;IACZ,uBAAuB;IACvB,iBAAiB;IACjB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,eAAe;IACf,gBAAgB;IAChB,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,yBAAyB;AAC7B;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,YAAY;IACZ,mBAAmB;IACnB,yBAAyB;IACzB,iBAAiB;AACrB;;AAEA;;IAEI,aAAa;IACb,WAAW;AACf;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI;QACI,UAAU;IACd;AACJ","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    background-color: #eeeeee;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.search-btn {\n    background-color: #e0e0e0;\n    width: 1.875rem;\n    height: 1.875rem;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n}\n\n.wind-container,\n.humidity-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -551,16 +551,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 let weather = {};
 
-const getWeather = async function getCurrentWeatherFromAPI(search) {
+const getWeather = async function getCurrentWeatherFromAPI(search, units) {
     const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
     const geocode = await response.json();
     const lat = geocode[0].lat;
     const lon = geocode[0].lon;
     console.log(geocode);
 
-    weather.name = geocode[0].name;
+    weather.search = geocode[0].name;
 
-    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2c90294ffc8f3aba96a28d8de4977cd3&units=metric`, {mode: 'cors'});
+    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2c90294ffc8f3aba96a28d8de4977cd3&units=${units}`, {mode: 'cors'});
     const weatherData = await weatherResponse.json();
     console.log(weatherData);
 
@@ -568,19 +568,26 @@ const getWeather = async function getCurrentWeatherFromAPI(search) {
 }
 
 const saveData = function saveWeatherDataFromAPI(data) {
-    // Weather city name has already been saved
     weather.country = data.sys.country;
-    weather.temp = data.main.temp;
-    weather.feelslike = data.main.feels_like;
-    weather.main = data.weather[0].main;
     weather.description = data.weather[0].description;
+    weather.feelslike = data.main.feels_like;
+    weather.humidity = data.main.humidity;
+    weather.main = data.weather[0].main;
+    weather.name = data.main.name;
+    weather.pressure = data.main.pressure;
+    weather.sunrise = data.sys.sunrise;
+    weather.sunset = data.sys.sunset;
+    weather.temp = data.main.temp;
+    weather.tempMax = data.main.temp_max;
+    weather.tempMin = data.main.temp_min;
+    weather.visibility = data.sys.visibility;
     weather.wind = data.wind.speed;
 
     return weather;
 }
 
-const getAndSaveData = async function getAndSaveWeatherData(search) {
-    const getWeatherData = await getWeather(search);
+const getAndSaveData = async function getAndSaveWeatherData(search, units) {
+    const getWeatherData = await getWeather(search, units);
     const saveWeatherData = await saveData(getWeatherData);
 
     console.log(saveWeatherData);
@@ -682,21 +689,27 @@ __webpack_require__.r(__webpack_exports__);
 const searchInput = document.querySelector('#search');
 const searchBtn = document.querySelector('.search-btn');
 
-const loadContent =  async function loadMainContent(search) {
+const loadContent =  async function loadMainContent(search, units) {
     const details = document.querySelector('.details');
+    details.innerHTML = '';
 
     let userSearch = searchInput.value;
     search = userSearch ? userSearch : 'Paris';
+    units = 'metric';
 
-    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_2__["default"])(search);
-    console.log(data.wind);
+    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_2__["default"])(search, units);
 
     const windContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-container', details);
     const windLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-label', windContainer);
     const windContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-content', windContainer);
+    const humidityContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-container', details);
+    const humidityLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-label', humidityContainer);
+    const humidityContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-content', humidityContainer);
 
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
+    humidityLabel.textContent = 'Humidity:';
+    humidityContent.textContent = data.humidity;
 
 }
 
