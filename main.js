@@ -643,7 +643,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])('Dubai');
+const searchBtn = document.querySelector('.search-btn');
+const search = document.querySelector('#search')
+
+const loadData = function loadWeatherData() {
+    ;(0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search.value);
+}
+
+searchBtn.addEventListener('click', loadData);
+
+// Let user press enter to run search
+search.addEventListener('keydown', function(e) {
+    if (e.keyCode === 13) (0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search.value);
+});
 })();
 
 /******/ })()
