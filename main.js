@@ -505,6 +505,57 @@ function styleTagTransform(css, styleElement) {
 
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./src/weatherData.js":
+/*!****************************!*\
+  !*** ./src/weatherData.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+let weather = {};
+
+const getWeather = async function getCurrentWeatherFromAPI(city) {
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
+    const geocode = await response.json();
+    const lat = geocode[0].lat;
+    const lon = geocode[0].lon;
+    console.log(geocode);
+
+    weather.name = geocode[0].name;
+
+    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2c90294ffc8f3aba96a28d8de4977cd3&units=metric`, {mode: 'cors'});
+    const weatherData = await weatherResponse.json();
+    console.log(weatherData);
+
+    return weatherData;
+}
+
+const saveData = function saveWeatherDataFromAPI(data) {
+    // Weather city name has already been saved
+    weather.country = data.sys.country;
+    weather.temp = data.main.temp;
+    weather.feelslike = data.main.feels_like;
+    weather.main = data.weather[0].main;
+    weather.description = data.weather[0].description;
+
+    return weather;
+}
+
+const getAndSaveData = async function getAndSaveWeatherData(city) {
+    const getWeatherData = await getWeather(city);
+    const saveWeatherData = await saveData(getWeatherData);
+
+    console.log(saveWeatherData);
+    return saveWeatherData;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getAndSaveData);
+
 /***/ })
 
 /******/ 	});
@@ -588,46 +639,11 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
+/* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
 
 
-let weather = {};
 
-const getWeather = async function getCurrentWeatherFromAPI(city) {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
-    const geocode = await response.json();
-    const lat = geocode[0].lat;
-    const lon = geocode[0].lon;
-    console.log(geocode);
-
-    weather.name = geocode[0].name;
-
-    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2c90294ffc8f3aba96a28d8de4977cd3&units=metric`, {mode: 'cors'});
-    const weatherData = await weatherResponse.json();
-    console.log(weatherData);
-
-    return weatherData;
-}
-
-const saveData = function processWeatherDataFromAPI(Data) {
-    // City name has already been saved
-    weather.country = Data.sys.country;
-    weather.temp = Data.main.temp;
-    weather.feelslike = Data.main.feels_like;
-    weather.main = Data.weather[0].main;
-    weather.description = Data.weather[0].description;
-
-    return weather;
-}
-
-const getAndSaveData = async function getAndSaveWeatherData(city) {
-    const getWeatherData = await getWeather(city);
-    const saveWeatherData = await saveData(getWeatherData);
-
-    console.log(saveWeatherData);
-    return saveWeatherData;
-}
-
-getAndSaveData('Dubai');
+(0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])('Dubai');
 })();
 
 /******/ })()
