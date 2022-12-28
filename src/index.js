@@ -1,16 +1,33 @@
 import './style.css';
+import createEl from './miscFn';
 import { default as getAndSaveWeatherData } from './weatherData';
 
+const searchInput = document.querySelector('#search');
 const searchBtn = document.querySelector('.search-btn');
-const search = document.querySelector('#search')
 
-const loadData = function loadWeatherData() {
-    getAndSaveWeatherData(search.value);
+const loadContent =  async function loadMainContent(search) {
+    const details = document.querySelector('.details');
+
+    let userSearch = searchInput.value;
+    search = userSearch ? userSearch : 'Paris';
+
+    const data = await getAndSaveWeatherData(search);
+    console.log(data.wind);
+
+    const windContainer = createEl('div', 'wind-container', details);
+    const windLabel = createEl('div', 'wind-label', windContainer);
+    const windContent = createEl('div', 'wind-content', windContainer);
+
+    windLabel.textContent = 'Wind:';
+    windContent.textContent = data.wind;
+
 }
 
-searchBtn.addEventListener('click', loadData);
+loadContent();
 
 // Let user press enter to run search
-search.addEventListener('keydown', function(e) {
-    if (e.keyCode === 13) getAndSaveWeatherData(search.value);
+searchInput.addEventListener('keydown', (e) => {
+    if (e.keyCode === 13) loadContent(searchInput.value);
 });
+
+searchBtn.addEventListener('click', () => loadContent(searchInput.value));

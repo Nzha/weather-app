@@ -507,6 +507,38 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/miscFn":
+/*!********************!*\
+  !*** ./src/miscFn ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createElement)
+/* harmony export */ });
+function createElement(type, className, parentEl) {
+    const element = document.createElement(type);
+    element.classList.add(className);
+
+    /**
+    * If parent element has been previously created via this function
+    * (e.g: const span3 = createEl2('span', 'span3', taskDescriptionDiv))
+    */
+    if (parentEl.element) {
+        parentEl.element.appendChild(element);
+    // (e.g: const span3 = document.createElement('span');)
+    } else {
+        parentEl.appendChild(element);
+    }
+
+    return element
+}
+
+
+
+/***/ }),
+
 /***/ "./src/weatherData.js":
 /*!****************************!*\
   !*** ./src/weatherData.js ***!
@@ -515,12 +547,12 @@ module.exports = styleTagTransform;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ getAndSaveData)
 /* harmony export */ });
 let weather = {};
 
-const getWeather = async function getCurrentWeatherFromAPI(city) {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
+const getWeather = async function getCurrentWeatherFromAPI(search) {
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
     const geocode = await response.json();
     const lat = geocode[0].lat;
     const lon = geocode[0].lon;
@@ -542,19 +574,21 @@ const saveData = function saveWeatherDataFromAPI(data) {
     weather.feelslike = data.main.feels_like;
     weather.main = data.weather[0].main;
     weather.description = data.weather[0].description;
+    weather.wind = data.wind.speed;
 
     return weather;
 }
 
-const getAndSaveData = async function getAndSaveWeatherData(city) {
-    const getWeatherData = await getWeather(city);
+const getAndSaveData = async function getAndSaveWeatherData(search) {
+    const getWeatherData = await getWeather(search);
     const saveWeatherData = await saveData(getWeatherData);
 
     console.log(saveWeatherData);
     return saveWeatherData;
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getAndSaveData);
+// export default getAndSaveData;
+
 
 /***/ })
 
@@ -639,23 +673,41 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-/* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
+/* harmony import */ var _miscFn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscFn */ "./src/miscFn");
+/* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
 
 
 
+
+const searchInput = document.querySelector('#search');
 const searchBtn = document.querySelector('.search-btn');
-const search = document.querySelector('#search')
 
-const loadData = function loadWeatherData() {
-    ;(0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search.value);
+const loadContent =  async function loadMainContent(search) {
+    const details = document.querySelector('.details');
+
+    let userSearch = searchInput.value;
+    search = userSearch ? userSearch : 'Paris';
+
+    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_2__["default"])(search);
+    console.log(data.wind);
+
+    const windContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-container', details);
+    const windLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-label', windContainer);
+    const windContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-content', windContainer);
+
+    windLabel.textContent = 'Wind:';
+    windContent.textContent = data.wind;
+
 }
 
-searchBtn.addEventListener('click', loadData);
+loadContent();
 
 // Let user press enter to run search
-search.addEventListener('keydown', function(e) {
-    if (e.keyCode === 13) (0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search.value);
+searchInput.addEventListener('keydown', (e) => {
+    if (e.keyCode === 13) loadContent(searchInput.value);
 });
+
+searchBtn.addEventListener('click', () => loadContent(searchInput.value));
 })();
 
 /******/ })()
