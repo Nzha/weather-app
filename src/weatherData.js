@@ -29,7 +29,8 @@ const saveData = function saveWeatherDataFromAPI(data) {
     weather.temp = data.main.temp;
     weather.tempMax = data.main.temp_max;
     weather.tempMin = data.main.temp_min;
-    weather.visibility = data.sys.visibility;
+    weather.timezone = data.timezone;
+    weather.visibility = data.visibility;
     weather.wind = data.wind.speed;
 
     return weather;
