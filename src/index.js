@@ -18,12 +18,14 @@ const loadContent =  async function loadMainContent(search, units) {
     const windContainer = createEl('div', 'wind-container', details);
     const windLabel = createEl('div', 'wind-label', windContainer);
     const windContent = createEl('div', 'wind-content', windContainer);
+    const windUnit = createEl('div', 'wind-unit', windContainer);
     const humidityContainer = createEl('div', 'humidity-container', details);
     const humidityLabel = createEl('div', 'humidity-label', humidityContainer);
     const humidityContent = createEl('div', 'humidity-content', humidityContainer);
 
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
+    windUnit.textContent = 'm/s';
     humidityLabel.textContent = 'Humidity:';
     humidityContent.textContent = data.humidity;
 

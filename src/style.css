@@ -49,12 +49,17 @@ header {
 .search-bar {
     grid-area: search-bar;
     background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
 }
 
 .search-form {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1;
     gap: var(--gap);
 }
 
@@ -73,17 +78,39 @@ header {
     outline: none;
 }
 
-.search-btn {
+.search-btn,
+.unit-btn {
     background-color: #e0e0e0;
-    width: 1.875rem;
-    height: 1.875rem;
     border: none;
     border-radius: 0.25rem;
+}
+
+.search-btn {
+    width: 1.875rem;
+    height: 1.875rem;
 }
 
 .search-btn:hover {
     cursor: pointer;
     background-color: #d0d0d0;
+}
+
+.unit-btn {
+    margin-left: auto;
+    padding: 0.5rem 1rem;
+}
+
+.unit-btn:hover {
+    cursor: pointer;
+}
+
+.unit-btn:hover .fa-solid {
+    color: black;
+}
+
+.unit-btn > .fa-solid {
+    color: #8f8f8f;
+    margin-left: 0.2rem;
 }
 
 .details {
