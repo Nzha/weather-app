@@ -48,6 +48,7 @@ header {
 
 .search-bar {
     grid-area: search-bar;
+    position: relative;
     background-color: #eeeeee;
     display: flex;
     align-items: center;
@@ -96,7 +97,8 @@ header {
 }
 
 #unit-btn {
-    margin-left: auto;
+    position: absolute;
+    right: 1.5rem;
     padding: 0.5rem 1rem;
     width: 5.46rem;
 }
