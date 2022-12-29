@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    background-color: #eeeeee;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 0 1.5rem;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex: 1;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.search-btn,\n.unit-btn {\n    background-color: #e0e0e0;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.search-btn {\n    width: 1.875rem;\n    height: 1.875rem;\n}\n\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n.unit-btn {\n    margin-left: auto;\n    padding: 0.5rem 1rem;\n}\n\n.unit-btn:hover {\n    cursor: pointer;\n}\n\n.unit-btn:hover .fa-solid {\n    color: black;\n}\n\n.unit-btn > .fa-solid {\n    color: #8f8f8f;\n    margin-left: 0.2rem;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n    min-height: 2rem;\n}\n\n.wind-container,\n.humidity-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;;GAEG;;AAEH;IACI,iCAAiC;CACpC;mCACkC;IAC/B,gBAAgB;CACnB,aAAa;CACb,aAAa;AACd;;AAEA;IACI,sBAAsB;AAC1B;AACA;IACI,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,2DAA2D;IAC3D;;;;cAIU;IACV,aAAa;IACb,yBAAyB;IACzB,SAAS;CACZ,UAAU;AACX;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,yBAAyB;IACzB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,iBAAiB;IACjB,SAAS;AACb;;AAEA;IACI,qBAAqB;IACrB,yBAAyB;IACzB,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,OAAO;IACP,eAAe;AACnB;;AAEA;IACI,UAAU;IACV,mBAAmB;IACnB,kBAAkB;IAClB,gBAAgB;IAChB,YAAY;IACZ,uBAAuB;IACvB,iBAAiB;IACjB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;AACjB;;AAEA;;IAEI,yBAAyB;IACzB,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,eAAe;IACf,yBAAyB;AAC7B;;AAEA;IACI,iBAAiB;IACjB,oBAAoB;AACxB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,YAAY;IACZ,mBAAmB;IACnB,yBAAyB;IACzB,iBAAiB;IACjB,gBAAgB;AACpB;;AAEA;;IAEI,aAAa;IACb,WAAW;AACf;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI;QACI,UAAU;IACd;AACJ","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    background-color: #eeeeee;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 0 1.5rem;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex: 1;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.search-btn,\n.unit-btn {\n    background-color: #e0e0e0;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.search-btn {\n    width: 1.875rem;\n    height: 1.875rem;\n}\n\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n.unit-btn {\n    margin-left: auto;\n    padding: 0.5rem 1rem;\n}\n\n.unit-btn:hover {\n    cursor: pointer;\n}\n\n.unit-btn:hover .fa-solid {\n    color: black;\n}\n\n.unit-btn > .fa-solid {\n    color: #8f8f8f;\n    margin-left: 0.2rem;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n    min-height: 2rem;\n}\n\n.wind-container,\n.humidity-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    background-color: #eeeeee;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 0 1.5rem;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex: 1;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.search-btn,\n#unit-btn {\n    background-color: #e0e0e0;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.search-btn {\n    width: 1.875rem;\n    height: 1.875rem;\n}\n\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n#unit-btn {\n    margin-left: auto;\n    padding: 0.5rem 1rem;\n    width: 5.46rem;\n}\n\n#unit-btn:hover {\n    cursor: pointer;\n}\n\n#unit-btn:hover .fa-solid {\n    color: black;\n}\n\n#unit-btn > .fa-solid {\n    color: #8f8f8f;\n    margin-left: 0.2rem;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n    min-height: 2rem;\n}\n\n.wind-container,\n.humidity-container,\n.sunrise-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;;GAEG;;AAEH;IACI,iCAAiC;CACpC;mCACkC;IAC/B,gBAAgB;CACnB,aAAa;CACb,aAAa;AACd;;AAEA;IACI,sBAAsB;AAC1B;AACA;IACI,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,2DAA2D;IAC3D;;;;cAIU;IACV,aAAa;IACb,yBAAyB;IACzB,SAAS;CACZ,UAAU;AACX;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,yBAAyB;IACzB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,iBAAiB;IACjB,SAAS;AACb;;AAEA;IACI,qBAAqB;IACrB,yBAAyB;IACzB,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,OAAO;IACP,eAAe;AACnB;;AAEA;IACI,UAAU;IACV,mBAAmB;IACnB,kBAAkB;IAClB,gBAAgB;IAChB,YAAY;IACZ,uBAAuB;IACvB,iBAAiB;IACjB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;AACjB;;AAEA;;IAEI,yBAAyB;IACzB,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,eAAe;IACf,yBAAyB;AAC7B;;AAEA;IACI,iBAAiB;IACjB,oBAAoB;IACpB,cAAc;AAClB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,YAAY;IACZ,mBAAmB;IACnB,yBAAyB;IACzB,iBAAiB;IACjB,gBAAgB;AACpB;;AAEA;;;IAGI,aAAa;IACb,WAAW;AACf;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI;QACI,UAAU;IACd;AACJ","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    background-color: #eeeeee;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 0 1.5rem;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex: 1;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.search-btn,\n#unit-btn {\n    background-color: #e0e0e0;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.search-btn {\n    width: 1.875rem;\n    height: 1.875rem;\n}\n\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n#unit-btn {\n    margin-left: auto;\n    padding: 0.5rem 1rem;\n    width: 5.46rem;\n}\n\n#unit-btn:hover {\n    cursor: pointer;\n}\n\n#unit-btn:hover .fa-solid {\n    color: black;\n}\n\n#unit-btn > .fa-solid {\n    color: #8f8f8f;\n    margin-left: 0.2rem;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n    min-height: 2rem;\n}\n\n.wind-container,\n.humidity-container,\n.sunrise-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -144,6 +144,160 @@ module.exports = function (item) {
   }
   return [content].join("\n");
 };
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/date-fns/esm/_lib/requiredArgs/index.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ requiredArgs)
+/* harmony export */ });
+function requiredArgs(required, args) {
+  if (args.length < required) {
+    throw new TypeError(required + ' argument' + (required > 1 ? 's' : '') + ' required, but only ' + args.length + ' present');
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/_lib/toInteger/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/date-fns/esm/_lib/toInteger/index.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ toInteger)
+/* harmony export */ });
+function toInteger(dirtyNumber) {
+  if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
+    return NaN;
+  }
+
+  var number = Number(dirtyNumber);
+
+  if (isNaN(number)) {
+    return number;
+  }
+
+  return number < 0 ? Math.ceil(number) : Math.floor(number);
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/fromUnixTime/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/fromUnixTime/index.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ fromUnixTime)
+/* harmony export */ });
+/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
+/* harmony import */ var _lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../_lib/toInteger/index.js */ "./node_modules/date-fns/esm/_lib/toInteger/index.js");
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+
+
+
+/**
+ * @name fromUnixTime
+ * @category Timestamp Helpers
+ * @summary Create a date from a Unix timestamp.
+ *
+ * @description
+ * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.
+ *
+ * @param {Number} unixTime - the given Unix timestamp (in seconds)
+ * @returns {Date} the date
+ * @throws {TypeError} 1 argument required
+ *
+ * @example
+ * // Create the date 29 February 2012 11:45:05:
+ * const result = fromUnixTime(1330515905)
+ * //=> Wed Feb 29 2012 11:45:05
+ */
+
+function fromUnixTime(dirtyUnixTime) {
+  (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
+  var unixTime = (0,_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyUnixTime);
+  return (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(unixTime * 1000);
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/toDate/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/esm/toDate/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ toDate)
+/* harmony export */ });
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+/**
+ * @name toDate
+ * @category Common Helpers
+ * @summary Convert the given argument to an instance of Date.
+ *
+ * @description
+ * Convert the given argument to an instance of Date.
+ *
+ * If the argument is an instance of Date, the function returns its clone.
+ *
+ * If the argument is a number, it is treated as a timestamp.
+ *
+ * If the argument is none of the above, the function returns Invalid Date.
+ *
+ * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
+ *
+ * @param {Date|Number} argument - the value to convert
+ * @returns {Date} the parsed date in the local time zone
+ * @throws {TypeError} 1 argument required
+ *
+ * @example
+ * // Clone the date:
+ * const result = toDate(new Date(2014, 1, 11, 11, 30, 30))
+ * //=> Tue Feb 11 2014 11:30:30
+ *
+ * @example
+ * // Convert the timestamp to date:
+ * const result = toDate(1392098430000)
+ * //=> Tue Feb 11 2014 11:30:30
+ */
+
+function toDate(argument) {
+  (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
+  var argStr = Object.prototype.toString.call(argument); // Clone the date
+
+  if (argument instanceof Date || _typeof(argument) === 'object' && argStr === '[object Date]') {
+    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
+    return new Date(argument.getTime());
+  } else if (typeof argument === 'number' || argStr === '[object Number]') {
+    return new Date(argument);
+  } else {
+    if ((typeof argument === 'string' || argStr === '[object String]') && typeof console !== 'undefined') {
+      // eslint-disable-next-line no-console
+      console.warn("Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#string-arguments"); // eslint-disable-next-line no-console
+
+      console.warn(new Error().stack);
+    }
+
+    return new Date(NaN);
+  }
+}
 
 /***/ }),
 
@@ -580,7 +734,8 @@ const saveData = function saveWeatherDataFromAPI(data) {
     weather.temp = data.main.temp;
     weather.tempMax = data.main.temp_max;
     weather.tempMin = data.main.temp_min;
-    weather.visibility = data.sys.visibility;
+    weather.timezone = data.timezone;
+    weather.visibility = data.visibility;
     weather.wind = data.wind.speed;
 
     return weather;
@@ -682,22 +837,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
 /* harmony import */ var _miscFn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscFn */ "./src/miscFn");
 /* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/fromUnixTime/index.js");
+
+
 
 
 
 
 const searchInput = document.querySelector('#search');
 const searchBtn = document.querySelector('.search-btn');
+const unitBtn = document.querySelector('#unit-btn');
 
 const loadContent =  async function loadMainContent(search, units) {
     const details = document.querySelector('.details');
     details.innerHTML = '';
 
-    let userSearch = searchInput.value;
-    search = userSearch ? userSearch : 'Paris';
-    units = 'metric';
-
     const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_2__["default"])(search, units);
+    const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunrise + data.timezone).toUTCString();
 
     const windContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-container', details);
     const windLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-label', windContainer);
@@ -706,16 +862,40 @@ const loadContent =  async function loadMainContent(search, units) {
     const humidityContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-container', details);
     const humidityLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-label', humidityContainer);
     const humidityContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-content', humidityContainer);
+    const sunriseContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunrise-container', details);
+    const sunriseLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunrise-label', sunriseContainer);
+    const sunriseContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunrise-content', sunriseContainer);
 
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
-    windUnit.textContent = 'm/s';
     humidityLabel.textContent = 'Humidity:';
-    humidityContent.textContent = data.humidity;
+    humidityContent.textContent = `${data.humidity}%`;
+    sunriseLabel.textContent = 'Sunrise:';
+    sunriseContent.textContent = sunriseCityLocalTime;
+
+    if (units === 'metric') {
+        windUnit.textContent = 'm/s';
+    } else {
+        windUnit.textContent = 'mph';
+    }
 
 }
 
-loadContent();
+loadContent('Paris', 'metric');
+
+const switchUnits = function switchUnitsOfMeasurement() {
+    if (unitBtn.classList.contains('metric')) {
+        unitBtn.classList.remove('metric');
+        unitBtn.classList.add('imperial');
+        unitBtn.textContent = '°F, m/s';
+        loadContent(searchInput.value, 'imperial');
+    } else {
+        unitBtn.classList.remove('imperial');
+        unitBtn.classList.add('metric');
+        unitBtn.textContent = '°C, mph';
+        loadContent(searchInput.value, 'metric');
+    }
+}
 
 // Let user press enter to run search
 searchInput.addEventListener('keydown', (e) => {
@@ -723,6 +903,8 @@ searchInput.addEventListener('keydown', (e) => {
 });
 
 searchBtn.addEventListener('click', () => loadContent(searchInput.value));
+
+unitBtn.addEventListener('click', switchUnits);
 })();
 
 /******/ })()
