@@ -1,7 +1,7 @@
 import './style.css';
 import createEl from './miscFn';
 import { default as getAndSaveWeatherData } from './weatherData';
-import { fromUnixTime } from 'date-fns';
+import { fromUnixTime, format } from 'date-fns';
 
 const searchInput = document.querySelector('#search');
 const searchBtn = document.querySelector('.search-btn');
@@ -12,7 +12,8 @@ const loadContent =  async function loadMainContent(search, units) {
     details.innerHTML = '';
 
     const data = await getAndSaveWeatherData(search, units);
-    const sunriseCityLocalTime = fromUnixTime(data.sunrise + data.timezone).toUTCString();
+    const sunriseCityLocalTime = fromUnixTime(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
+    const sunsetCityLocalTime = fromUnixTime(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
 
     const windContainer = createEl('div', 'wind-container', details);
     const windLabel = createEl('div', 'wind-label', windContainer);
@@ -24,18 +25,35 @@ const loadContent =  async function loadMainContent(search, units) {
     const sunriseContainer = createEl('div', 'sunrise-container', details);
     const sunriseLabel = createEl('div', 'sunrise-label', sunriseContainer);
     const sunriseContent = createEl('div', 'sunrise-content', sunriseContainer);
+    const sunsetContainer = createEl('div', 'sunset-container', details);
+    const sunsetLabel = createEl('div', 'sunset-label', sunsetContainer);
+    const sunsetContent = createEl('div', 'sunset-content', sunsetContainer);
+    const visibilityContainer = createEl('div', 'visibility-container', details);
+    const visibilityLabel = createEl('div', 'visibility-label', visibilityContainer);
+    const visibilityContent = createEl('div', 'visibility-content', visibilityContainer);
+    const pressureContainer = createEl('div', 'pressure-container', details);
+    const pressureLabel = createEl('div', 'pressure-label', pressureContainer);
+    const pressureContent = createEl('div', 'pressure-content', pressureContainer);
 
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
     humidityLabel.textContent = 'Humidity:';
     humidityContent.textContent = `${data.humidity}%`;
     sunriseLabel.textContent = 'Sunrise:';
-    sunriseContent.textContent = sunriseCityLocalTime;
+    sunsetLabel.textContent = 'Sunset:';
+    visibilityLabel.textContent = 'Visibility:';
+    visibilityContent.textContent = `${(data.visibility / 1000)} km`;
+    pressureLabel.textContent = 'Pressure:';
+    pressureContent.textContent = `${data.pressure} hPa`;
 
     if (units === 'metric') {
         windUnit.textContent = 'm/s';
+        sunriseContent.textContent = format(new Date(sunriseCityLocalTime), 'H:mm');
+        sunsetContent.textContent = format(new Date(sunsetCityLocalTime), 'H:mm');
     } else {
         windUnit.textContent = 'mph';
+        sunriseContent.textContent = format(new Date(sunriseCityLocalTime), 'h:mm bbbb')
+        sunsetContent.textContent = format(new Date(sunsetCityLocalTime), 'h:mm bbbb');
     }
 
 }

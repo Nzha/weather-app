@@ -127,7 +127,10 @@ header {
 
 .wind-container,
 .humidity-container,
-.sunrise-container {
+.sunrise-container,
+.sunset-container,
+.visibility-container,
+.pressure-container {
     display: flex;
     gap: 0.2rem;
 }
