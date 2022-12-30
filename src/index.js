@@ -9,11 +9,14 @@ const unitBtn = document.querySelector('#unit-btn');
 
 const loadContent =  async function loadMainContent(search, units) {
     const details = document.querySelector('.details');
+    searchInput.value = '';
     details.innerHTML = '';
 
     const data = await getAndSaveWeatherData(search, units);
     const sunriseCityLocalTime = fromUnixTime(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
     const sunsetCityLocalTime = fromUnixTime(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
+
+    searchInput.value = `${data.name}, ${search}, ${data.country}`;
 
     const windContainer = createEl('div', 'wind-container', details);
     const windLabel = createEl('div', 'wind-label', windContainer);

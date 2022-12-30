@@ -53,7 +53,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 1.5rem;
 }
 
 .search-form {
@@ -79,6 +78,7 @@ header {
     outline: none;
 }
 
+.location-btn,
 .search-btn,
 #unit-btn {
     background-color: #e0e0e0;
@@ -86,11 +86,13 @@ header {
     border-radius: 0.25rem;
 }
 
+.location-btn,
 .search-btn {
     width: 1.875rem;
     height: 1.875rem;
 }
 
+.location-btn:hover,
 .search-btn:hover {
     cursor: pointer;
     background-color: #d0d0d0;
