@@ -9,8 +9,9 @@ const unitBtn = document.querySelector('#unit-btn');
 
 const loadContent =  async function loadMainContent(search, units) {
     const details = document.querySelector('.details');
-    searchInput.value = '';
+    const main = document.querySelector('.main');
     details.innerHTML = '';
+    main.innerHTML = '';
 
     const data = await getAndSaveWeatherData(search, units);
     const sunriseCityLocalTime = fromUnixTime(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
@@ -18,6 +19,7 @@ const loadContent =  async function loadMainContent(search, units) {
 
     searchInput.value = `${data.name}, ${search}, ${data.country}`;
 
+    // DETAILS
     const windContainer = createEl('div', 'wind-container', details);
     const windLabel = createEl('div', 'wind-label', windContainer);
     const windContent = createEl('div', 'wind-content', windContainer);
@@ -38,6 +40,22 @@ const loadContent =  async function loadMainContent(search, units) {
     const pressureLabel = createEl('div', 'pressure-label', pressureContainer);
     const pressureContent = createEl('div', 'pressure-content', pressureContainer);
 
+    // MAIN
+    const currentlyContainer = createEl('div', 'currently-container', main);
+    const summaryContainer = createEl('div', 'summary-container', currentlyContainer);
+    const tempContent = createEl('div', 'temp-content', summaryContainer);
+    const mainContent = createEl('div', 'main-content', summaryContainer);
+    const summaryHighLowContainer = createEl('div', 'summaryHighLow-container', currentlyContainer);
+    const feelsLikeContainer = createEl('div', 'feels-like-container', summaryHighLowContainer);
+    const feelsLikeLabel = createEl('div', 'feels-like-label', feelsLikeContainer);
+    const feelsLikeContent = createEl('div', 'feels-like-content', feelsLikeContainer);
+    const lowTempContainer = createEl('div', 'low-temp-container', summaryHighLowContainer);
+    const lowTempLabel = createEl('div', 'low-temp-label', lowTempContainer);
+    const lowTempContent = createEl('div', 'low-temp-content', lowTempContainer);
+    const highTempContainer = createEl('div', 'high-temp-container', summaryHighLowContainer);
+    const highTempLabel = createEl('div', 'high-temp-label', highTempContainer);
+    const highTempContent = createEl('div', 'high-temp-content', highTempContainer);
+
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
     humidityLabel.textContent = 'Humidity:';
@@ -48,6 +66,8 @@ const loadContent =  async function loadMainContent(search, units) {
     visibilityContent.textContent = `${(data.visibility / 1000)} km`;
     pressureLabel.textContent = 'Pressure:';
     pressureContent.textContent = `${data.pressure} hPa`;
+    tempContent.textContent = `${data.temp}°`;
+
 
     if (units === 'metric') {
         windUnit.textContent = 'm/s';
@@ -65,20 +85,21 @@ const loadContent =  async function loadMainContent(search, units) {
 
 loadContent('Paris', 'metric');
 
-const switchUnits = async function switchUnitsOfMeasurement() {
+const switchUnits = function switchUnitsOfMeasurement() {
     const windUnit = document.querySelector('.wind-unit');
     const windContent = document.querySelector('.wind-content');
+    const tempContent = document.querySelector('.temp-content');
 
     if (unitBtn.classList.contains('metric')) {
         switchUnitBtn('metric');
         windContent.textContent = Math.round((windContent.textContent*2.237) * 100) / 100;;
         windUnit.textContent = 'mph';
-
+        tempContent.textContent = `${round(cToF(tempContent.textContent.slice(0, -1)))}°`;
     } else {
         switchUnitBtn();
         windContent.textContent = Math.round((windContent.textContent/2.237) * 100) / 100;
         windUnit.textContent = 'm/s';
-
+        tempContent.textContent = `${round(fToC(tempContent.textContent.slice(0, -1)))}°`;
     }
 }
 
@@ -94,11 +115,23 @@ const switchUnitBtn = function switchUnitButton(unit) {
     }
 }
 
+const cToF = function celsiusToFahrenheit(celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+const fToC = function fahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
+}
+
+const round = function roundToTwoDecimals(num) {
+    return Math.round(num * 100) / 100
+}
+
 // Let user press enter to run search
 searchInput.addEventListener('keydown', (e) => {
-    if (e.keyCode === 13) loadContent(searchInput.value);
+    if (e.keyCode === 13) loadContent(searchInput.value, 'metric');
 });
 
-searchBtn.addEventListener('click', () => loadContent(searchInput.value));
+searchBtn.addEventListener('click', () => loadContent(searchInput.value), 'metric');
 
 unitBtn.addEventListener('click', switchUnits);

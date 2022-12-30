@@ -143,6 +143,12 @@ header {
     grid-area: main;
 }
 
+.currently-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
 @media only screen and (min-width: 1400px) {
     #search {
         width: 35%;
