@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    position: relative;\n    background-color: #eeeeee;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex: 1;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.location-btn,\n.search-btn,\n#unit-btn {\n    background-color: #e0e0e0;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.location-btn,\n.search-btn {\n    width: 1.875rem;\n    height: 1.875rem;\n}\n\n.location-btn:hover,\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n#unit-btn {\n    position: absolute;\n    right: 1.5rem;\n    padding: 0.5rem 1rem;\n    width: 5.46rem;\n}\n\n#unit-btn:hover {\n    cursor: pointer;\n}\n\n#unit-btn:hover .fa-solid {\n    color: black;\n}\n\n#unit-btn > .fa-solid {\n    color: #8f8f8f;\n    margin-left: 0.2rem;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n    min-height: 2rem;\n}\n\n.wind-container,\n.humidity-container,\n.sunrise-container,\n.sunset-container,\n.visibility-container,\n.pressure-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;;GAEG;;AAEH;IACI,iCAAiC;CACpC;mCACkC;IAC/B,gBAAgB;CACnB,aAAa;CACb,aAAa;AACd;;AAEA;IACI,sBAAsB;AAC1B;AACA;IACI,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,2DAA2D;IAC3D;;;;cAIU;IACV,aAAa;IACb,yBAAyB;IACzB,SAAS;CACZ,UAAU;AACX;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,yBAAyB;IACzB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,iBAAiB;IACjB,SAAS;AACb;;AAEA;IACI,qBAAqB;IACrB,kBAAkB;IAClB,yBAAyB;IACzB,aAAa;IACb,mBAAmB;IACnB,uBAAuB;AAC3B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,OAAO;IACP,eAAe;AACnB;;AAEA;IACI,UAAU;IACV,mBAAmB;IACnB,kBAAkB;IAClB,gBAAgB;IAChB,YAAY;IACZ,uBAAuB;IACvB,iBAAiB;IACjB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;AACjB;;AAEA;;;IAGI,yBAAyB;IACzB,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;;IAEI,eAAe;IACf,gBAAgB;AACpB;;AAEA;;IAEI,eAAe;IACf,yBAAyB;AAC7B;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,oBAAoB;IACpB,cAAc;AAClB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,YAAY;IACZ,mBAAmB;IACnB,yBAAyB;IACzB,iBAAiB;IACjB,gBAAgB;AACpB;;AAEA;;;;;;IAMI,aAAa;IACb,WAAW;AACf;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI;QACI,UAAU;IACd;AACJ","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    position: relative;\n    background-color: #eeeeee;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex: 1;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.location-btn,\n.search-btn,\n#unit-btn {\n    background-color: #e0e0e0;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.location-btn,\n.search-btn {\n    width: 1.875rem;\n    height: 1.875rem;\n}\n\n.location-btn:hover,\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n#unit-btn {\n    position: absolute;\n    right: 1.5rem;\n    padding: 0.5rem 1rem;\n    width: 5.46rem;\n}\n\n#unit-btn:hover {\n    cursor: pointer;\n}\n\n#unit-btn:hover .fa-solid {\n    color: black;\n}\n\n#unit-btn > .fa-solid {\n    color: #8f8f8f;\n    margin-left: 0.2rem;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n    min-height: 2rem;\n}\n\n.wind-container,\n.humidity-container,\n.sunrise-container,\n.sunset-container,\n.visibility-container,\n.pressure-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    position: relative;\n    background-color: #eeeeee;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex: 1;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.location-btn,\n.search-btn,\n#unit-btn {\n    background-color: #e0e0e0;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.location-btn,\n.search-btn {\n    width: 1.875rem;\n    height: 1.875rem;\n}\n\n.location-btn:hover,\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n#unit-btn {\n    position: absolute;\n    right: 1.5rem;\n    padding: 0.5rem 1rem;\n    width: 5.46rem;\n}\n\n#unit-btn:hover {\n    cursor: pointer;\n}\n\n#unit-btn:hover .fa-solid {\n    color: black;\n}\n\n#unit-btn > .fa-solid {\n    color: #8f8f8f;\n    margin-left: 0.2rem;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n    min-height: 2rem;\n}\n\n.wind-container,\n.humidity-container,\n.sunrise-container,\n.sunset-container,\n.visibility-container,\n.pressure-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n.currently-container {\n    display: flex;\n    justify-content: center;\n    padding-top: 1rem;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;;GAEG;;AAEH;IACI,iCAAiC;CACpC;mCACkC;IAC/B,gBAAgB;CACnB,aAAa;CACb,aAAa;AACd;;AAEA;IACI,sBAAsB;AAC1B;AACA;IACI,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,2DAA2D;IAC3D;;;;cAIU;IACV,aAAa;IACb,yBAAyB;IACzB,SAAS;CACZ,UAAU;AACX;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,yBAAyB;IACzB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,iBAAiB;IACjB,SAAS;AACb;;AAEA;IACI,qBAAqB;IACrB,kBAAkB;IAClB,yBAAyB;IACzB,aAAa;IACb,mBAAmB;IACnB,uBAAuB;AAC3B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,OAAO;IACP,eAAe;AACnB;;AAEA;IACI,UAAU;IACV,mBAAmB;IACnB,kBAAkB;IAClB,gBAAgB;IAChB,YAAY;IACZ,uBAAuB;IACvB,iBAAiB;IACjB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;AACjB;;AAEA;;;IAGI,yBAAyB;IACzB,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;;IAEI,eAAe;IACf,gBAAgB;AACpB;;AAEA;;IAEI,eAAe;IACf,yBAAyB;AAC7B;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,oBAAoB;IACpB,cAAc;AAClB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,YAAY;IACZ,mBAAmB;IACnB,yBAAyB;IACzB,iBAAiB;IACjB,gBAAgB;AACpB;;AAEA;;;;;;IAMI,aAAa;IACb,WAAW;AACf;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,iBAAiB;AACrB;;AAEA;IACI;QACI,UAAU;IACd;AACJ","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\n:root {\n    font-family: 'Roboto', sans-serif;\n\t--shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,\n\trgba(0, 0, 0, 0.1) 0px 0px 0px 1px;\n    --color: #166e67;\n\t--gap: 0.5rem;\n\t--radius: 5px;\n}\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-rows: min-content min-content min-content 1fr;\n    grid-template-areas:\n        \"header\"\n        \"search-bar\"\n        \"details\"\n        \"main\";\n    height: 100vh;\n    background-color: #fcfcfc;\n    margin: 0;\n\tpadding: 0;\n}\n\nheader {\n    grid-area: header;\n    color: white;\n    background-color: #333333;\n    padding: 0.5rem 0;\n}\n\n.logo {\n    display: flex;\n    justify-content: center;\n    font-size: 1.4rem;\n    gap: 1rem;\n}\n\n.search-bar {\n    grid-area: search-bar;\n    position: relative;\n    background-color: #eeeeee;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.search-form {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex: 1;\n    gap: var(--gap);\n}\n\n#search {\n    width: 50%;\n    font-size: 1.125rem;\n    text-align: center;\n    height: 1.875rem;\n    border: none;\n    border-radius: 1.563rem;\n    padding: 0.313rem;\n    margin: 0.438rem 0.938rem;\n}\n  \n#search:focus {\n    outline: none;\n}\n\n.location-btn,\n.search-btn,\n#unit-btn {\n    background-color: #e0e0e0;\n    border: none;\n    border-radius: 0.25rem;\n}\n\n.location-btn,\n.search-btn {\n    width: 1.875rem;\n    height: 1.875rem;\n}\n\n.location-btn:hover,\n.search-btn:hover {\n    cursor: pointer;\n    background-color: #d0d0d0;\n}\n\n#unit-btn {\n    position: absolute;\n    right: 1.5rem;\n    padding: 0.5rem 1rem;\n    width: 5.46rem;\n}\n\n#unit-btn:hover {\n    cursor: pointer;\n}\n\n#unit-btn:hover .fa-solid {\n    color: black;\n}\n\n#unit-btn > .fa-solid {\n    color: #8f8f8f;\n    margin-left: 0.2rem;\n}\n\n.details {\n    grid-area: details;\n    display: flex;\n    justify-content: center;\n    gap: 0.75rem;\n    font-size: 0.875rem;\n    background-color: #f7f7f7;\n    padding: 0.5rem 0;\n    min-height: 2rem;\n}\n\n.wind-container,\n.humidity-container,\n.sunrise-container,\n.sunset-container,\n.visibility-container,\n.pressure-container {\n    display: flex;\n    gap: 0.2rem;\n}\n\n.main {\n    grid-area: main;\n}\n\n.currently-container {\n    display: flex;\n    justify-content: center;\n    padding-top: 1rem;\n}\n\n@media only screen and (min-width: 1400px) {\n    #search {\n        width: 35%;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3668,8 +3668,9 @@ const unitBtn = document.querySelector('#unit-btn');
 
 const loadContent =  async function loadMainContent(search, units) {
     const details = document.querySelector('.details');
-    searchInput.value = '';
+    const main = document.querySelector('.main');
     details.innerHTML = '';
+    main.innerHTML = '';
 
     const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_2__["default"])(search, units);
     const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
@@ -3677,6 +3678,7 @@ const loadContent =  async function loadMainContent(search, units) {
 
     searchInput.value = `${data.name}, ${search}, ${data.country}`;
 
+    // DETAILS
     const windContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-container', details);
     const windLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-label', windContainer);
     const windContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-content', windContainer);
@@ -3697,6 +3699,22 @@ const loadContent =  async function loadMainContent(search, units) {
     const pressureLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'pressure-label', pressureContainer);
     const pressureContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'pressure-content', pressureContainer);
 
+    // MAIN
+    const currentlyContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'currently-container', main);
+    const summaryContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'summary-container', currentlyContainer);
+    const tempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'temp-content', summaryContainer);
+    const mainContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'main-content', summaryContainer);
+    const summaryHighLowContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'summaryHighLow-container', currentlyContainer);
+    const feelsLikeContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'feels-like-container', summaryHighLowContainer);
+    const feelsLikeLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'feels-like-label', feelsLikeContainer);
+    const feelsLikeContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'feels-like-content', feelsLikeContainer);
+    const lowTempContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'low-temp-container', summaryHighLowContainer);
+    const lowTempLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'low-temp-label', lowTempContainer);
+    const lowTempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'low-temp-content', lowTempContainer);
+    const highTempContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'high-temp-container', summaryHighLowContainer);
+    const highTempLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'high-temp-label', highTempContainer);
+    const highTempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'high-temp-content', highTempContainer);
+
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
     humidityLabel.textContent = 'Humidity:';
@@ -3707,6 +3725,8 @@ const loadContent =  async function loadMainContent(search, units) {
     visibilityContent.textContent = `${(data.visibility / 1000)} km`;
     pressureLabel.textContent = 'Pressure:';
     pressureContent.textContent = `${data.pressure} hPa`;
+    tempContent.textContent = `${data.temp}°`;
+
 
     if (units === 'metric') {
         windUnit.textContent = 'm/s';
@@ -3724,20 +3744,21 @@ const loadContent =  async function loadMainContent(search, units) {
 
 loadContent('Paris', 'metric');
 
-const switchUnits = async function switchUnitsOfMeasurement() {
+const switchUnits = function switchUnitsOfMeasurement() {
     const windUnit = document.querySelector('.wind-unit');
     const windContent = document.querySelector('.wind-content');
+    const tempContent = document.querySelector('.temp-content');
 
     if (unitBtn.classList.contains('metric')) {
         switchUnitBtn('metric');
         windContent.textContent = Math.round((windContent.textContent*2.237) * 100) / 100;;
         windUnit.textContent = 'mph';
-
+        tempContent.textContent = `${round(cToF(tempContent.textContent.slice(0, -1)))}°`;
     } else {
         switchUnitBtn();
         windContent.textContent = Math.round((windContent.textContent/2.237) * 100) / 100;
         windUnit.textContent = 'm/s';
-
+        tempContent.textContent = `${round(fToC(tempContent.textContent.slice(0, -1)))}°`;
     }
 }
 
@@ -3753,12 +3774,24 @@ const switchUnitBtn = function switchUnitButton(unit) {
     }
 }
 
+const cToF = function celsiusToFahrenheit(celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+const fToC = function fahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
+}
+
+const round = function roundToTwoDecimals(num) {
+    return Math.round(num * 100) / 100
+}
+
 // Let user press enter to run search
 searchInput.addEventListener('keydown', (e) => {
-    if (e.keyCode === 13) loadContent(searchInput.value);
+    if (e.keyCode === 13) loadContent(searchInput.value, 'metric');
 });
 
-searchBtn.addEventListener('click', () => loadContent(searchInput.value));
+searchBtn.addEventListener('click', () => loadContent(searchInput.value), 'metric');
 
 unitBtn.addEventListener('click', switchUnits);
 })();
