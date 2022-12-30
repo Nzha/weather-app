@@ -59,21 +59,38 @@ const loadContent =  async function loadMainContent(search, units) {
         sunsetContent.textContent = format(new Date(sunsetCityLocalTime), 'h:mm bbbb');
     }
 
+    return data;
+
 }
 
 loadContent('Paris', 'metric');
 
-const switchUnits = function switchUnitsOfMeasurement() {
+const switchUnits = async function switchUnitsOfMeasurement() {
+    const windUnit = document.querySelector('.wind-unit');
+    const windContent = document.querySelector('.wind-content');
+
     if (unitBtn.classList.contains('metric')) {
+        switchUnitBtn('metric');
+        windContent.textContent = Math.round((windContent.textContent*2.237) * 100) / 100;;
+        windUnit.textContent = 'mph';
+
+    } else {
+        switchUnitBtn();
+        windContent.textContent = Math.round((windContent.textContent/2.237) * 100) / 100;
+        windUnit.textContent = 'm/s';
+
+    }
+}
+
+const switchUnitBtn = function switchUnitButton(unit) {
+    if (unit === 'metric') {
         unitBtn.classList.remove('metric');
         unitBtn.classList.add('imperial');
-        unitBtn.textContent = '°F, m/s';
-        loadContent(searchInput.value, 'imperial');
+        unitBtn.textContent = '°F, mph';
     } else {
         unitBtn.classList.remove('imperial');
         unitBtn.classList.add('metric');
-        unitBtn.textContent = '°C, mph';
-        loadContent(searchInput.value, 'metric');
+        unitBtn.textContent = '°C, m/s';
     }
 }
 
