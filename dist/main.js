@@ -3519,24 +3519,28 @@ function createElement(type, className, parentEl) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ getAndSaveData)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 let weather = {};
 
 const getWeather = async function getCurrentWeatherFromAPI(search, units) {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
-    const geocode = await response.json();
-    const lat = geocode[0].lat;
-    const lon = geocode[0].lon;
-    console.log(geocode);
+    try {
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
+        const geocode = await response.json();
+        const lat = geocode[0].lat;
+        const lon = geocode[0].lon;
+        console.log(geocode);
 
-    weather.search = geocode[0].name;
+        weather.search = geocode[0].name;
 
-    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2c90294ffc8f3aba96a28d8de4977cd3&units=${units}`, {mode: 'cors'});
-    const weatherData = await weatherResponse.json();
-    console.log(weatherData);
+        const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2c90294ffc8f3aba96a28d8de4977cd3&units=${units}`, {mode: 'cors'});
+        const weatherData = await weatherResponse.json();
+        console.log(weatherData);
 
-    return weatherData;
+        return weatherData;
+    } catch (err) {
+        errorHandle();
+    }
 }
 
 const saveData = function saveWeatherDataFromAPI(data) {
@@ -3568,8 +3572,12 @@ const getAndSaveData = async function getAndSaveWeatherData(search, units) {
     return saveWeatherData;
 }
 
-// export default getAndSaveData;
+const errorHandle = function errorHandling() {
+    const details = document.querySelector('.details');
+    details.textContent = 'Location not found';
+}
 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getAndSaveData);
 
 /***/ })
 
@@ -3670,14 +3678,19 @@ const unitBtn = document.querySelector('#unit-btn');
 const loadContent =  async function loadMainContent(search, units) {
     const details = document.querySelector('.details');
     const main = document.querySelector('.main');
+    searchInput.value = '';
     details.innerHTML = '';
     main.innerHTML = '';
+
+    console.log(search);
 
     const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_2__["default"])(search, units);
     const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
     const sunsetCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
 
-    searchInput.value = `${data.name}, ${search}, ${data.country}`;
+    console.log(data.search);
+
+    searchInput.value = `${data.name}, ${data.search}, ${data.country}`;
 
     // DETAILS
     const windContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-container', details);
