@@ -134,7 +134,10 @@ header {
 .sunrise-container,
 .sunset-container,
 .visibility-container,
-.pressure-container {
+.pressure-container,
+.feels-like-container,
+.low-temp-container,
+.high-temp-container {
     display: flex;
     gap: 0.2rem;
 }
@@ -145,8 +148,21 @@ header {
 
 .currently-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
     padding-top: 1rem;
+}
+
+.summary-container {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 2.5rem;
+}
+
+.summaryHighLow-container {
+    display: flex;
+    gap: 0.5rem;
 }
 
 @media only screen and (min-width: 1400px) {

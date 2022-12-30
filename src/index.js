@@ -66,7 +66,15 @@ const loadContent =  async function loadMainContent(search, units) {
     visibilityContent.textContent = `${(data.visibility / 1000)} km`;
     pressureLabel.textContent = 'Pressure:';
     pressureContent.textContent = `${data.pressure} hPa`;
-    tempContent.textContent = `${data.temp}°`;
+
+    tempContent.textContent = `${Math.round(data.temp)}°`;
+    mainContent.textContent = data.main;
+    feelsLikeLabel.textContent = 'Feels Like:';
+    feelsLikeContent.textContent = `${Math.round(data.feelslike)}°`;
+    lowTempLabel.textContent = 'Low:';
+    lowTempContent.textContent = `${Math.round(data.tempMin)}°`;
+    highTempLabel.textContent = 'High:';
+    highTempContent.textContent = `${Math.round(data.tempMax)}°`;
 
 
     if (units === 'metric') {
@@ -80,7 +88,6 @@ const loadContent =  async function loadMainContent(search, units) {
     }
 
     return data;
-
 }
 
 loadContent('Paris', 'metric');
@@ -89,17 +96,26 @@ const switchUnits = function switchUnitsOfMeasurement() {
     const windUnit = document.querySelector('.wind-unit');
     const windContent = document.querySelector('.wind-content');
     const tempContent = document.querySelector('.temp-content');
+    const feelsLikeContent = document.querySelector('.feels-like-content');
+    const lowTempContent = document.querySelector('.low-temp-content');
+    const highTempContent = document.querySelector('.high-temp-content');
 
     if (unitBtn.classList.contains('metric')) {
         switchUnitBtn('metric');
         windContent.textContent = Math.round((windContent.textContent*2.237) * 100) / 100;;
         windUnit.textContent = 'mph';
-        tempContent.textContent = `${round(cToF(tempContent.textContent.slice(0, -1)))}°`;
+        tempContent.textContent = `${Math.round(cToF(tempContent.textContent.slice(0, -1)))}°`;
+        feelsLikeContent.textContent = `${Math.round(cToF(feelsLikeContent.textContent.slice(0, -1)))}°`;
+        lowTempContent.textContent = `${Math.round(cToF(lowTempContent.textContent.slice(0, -1)))}°`;
+        highTempContent.textContent = `${Math.round(cToF(highTempContent.textContent.slice(0, -1)))}°`;
     } else {
         switchUnitBtn();
         windContent.textContent = Math.round((windContent.textContent/2.237) * 100) / 100;
         windUnit.textContent = 'm/s';
-        tempContent.textContent = `${round(fToC(tempContent.textContent.slice(0, -1)))}°`;
+        tempContent.textContent = `${Math.round(fToC(tempContent.textContent.slice(0, -1)))}°`;
+        feelsLikeContent.textContent = `${Math.round(fToC(feelsLikeContent.textContent.slice(0, -1)))}°`;
+        lowTempContent.textContent = `${Math.round(fToC(lowTempContent.textContent.slice(0, -1)))}°`;
+        highTempContent.textContent = `${Math.round(fToC(highTempContent.textContent.slice(0, -1)))}°`;
     }
 }
 
@@ -121,10 +137,6 @@ const cToF = function celsiusToFahrenheit(celsius) {
 
 const fToC = function fahrenheitToCelsius(fahrenheit) {
     return (fahrenheit - 32) * 5/9;
-}
-
-const round = function roundToTwoDecimals(num) {
-    return Math.round(num * 100) / 100
 }
 
 // Let user press enter to run search
