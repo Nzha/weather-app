@@ -21,6 +21,7 @@ const saveData = function saveWeatherDataFromAPI(data) {
     weather.description = data.weather[0].description;
     weather.feelslike = data.main.feels_like;
     weather.humidity = data.main.humidity;
+    weather.icon = data.weather[0].icon;
     weather.main = data.weather[0].main;
     weather.name = data.name;
     weather.pressure = data.main.pressure;

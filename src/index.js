@@ -42,10 +42,12 @@ const loadContent =  async function loadMainContent(search, units) {
 
     // MAIN
     const currentlyContainer = createEl('div', 'currently-container', main);
+    const icon = createEl('img', 'icon-content', currentlyContainer);
     const summaryContainer = createEl('div', 'summary-container', currentlyContainer);
-    const tempContent = createEl('div', 'temp-content', summaryContainer);
-    const mainContent = createEl('div', 'main-content', summaryContainer);
-    const summaryHighLowContainer = createEl('div', 'summaryHighLow-container', currentlyContainer);
+    const summaryTempDescContainer = createEl('div', 'summaryTempDesc-container', summaryContainer);
+    const tempContent = createEl('div', 'temp-content', summaryTempDescContainer);
+    const mainContent = createEl('div', 'main-content', summaryTempDescContainer);
+    const summaryHighLowContainer = createEl('div', 'summaryHighLow-container', summaryContainer);
     const feelsLikeContainer = createEl('div', 'feels-like-container', summaryHighLowContainer);
     const feelsLikeLabel = createEl('div', 'feels-like-label', feelsLikeContainer);
     const feelsLikeContent = createEl('div', 'feels-like-content', feelsLikeContainer);
@@ -67,6 +69,7 @@ const loadContent =  async function loadMainContent(search, units) {
     pressureLabel.textContent = 'Pressure:';
     pressureContent.textContent = `${data.pressure} hPa`;
 
+    icon.src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
     tempContent.textContent = `${Math.round(data.temp)}°`;
     mainContent.textContent = data.main;
     feelsLikeLabel.textContent = 'Feels Like:';
