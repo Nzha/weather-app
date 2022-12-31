@@ -3675,20 +3675,26 @@ const searchInput = document.querySelector('#search');
 const searchBtn = document.querySelector('.search-btn');
 const unitBtn = document.querySelector('#unit-btn');
 
-const loadContent =  async function loadMainContent(search, units) {
+const loadContent =  async function loadMainContent(search) {
+    if (!search) return;
+
     const details = document.querySelector('.details');
     const main = document.querySelector('.main');
     searchInput.value = '';
     details.innerHTML = '';
     main.innerHTML = '';
 
-    console.log(search);
+    // console.log(search);
 
-    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_2__["default"])(search, units);
+    const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
+
+    console.log(currentUnit);
+
+    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_2__["default"])(search, currentUnit);
     const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
     const sunsetCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
 
-    console.log(data.search);
+    // console.log(data.search);
 
     searchInput.value = `${data.name}, ${data.search}, ${data.country}`;
 
@@ -3753,7 +3759,7 @@ const loadContent =  async function loadMainContent(search, units) {
     highTempContent.textContent = `${Math.round(data.tempMax)}°`;
 
 
-    if (units === 'metric') {
+    if (currentUnit === 'metric') {
         windUnit.textContent = 'm/s';
         sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunriseCityLocalTime), 'H:mm');
         sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunsetCityLocalTime), 'H:mm');
@@ -3792,6 +3798,9 @@ const switchUnits = function switchUnitsOfMeasurement() {
         feelsLikeContent.textContent = `${Math.round(fToC(feelsLikeContent.textContent.slice(0, -1)))}°`;
         lowTempContent.textContent = `${Math.round(fToC(lowTempContent.textContent.slice(0, -1)))}°`;
         highTempContent.textContent = `${Math.round(fToC(highTempContent.textContent.slice(0, -1)))}°`;
+
+        console.log(tempContent.textContent.slice(0, -1));
+        console.log(cToF(tempContent.textContent.slice(0, -1)));
     }
 }
 
@@ -3817,10 +3826,10 @@ const fToC = function fahrenheitToCelsius(fahrenheit) {
 
 // Let user press enter to run search
 searchInput.addEventListener('keydown', (e) => {
-    if (e.keyCode === 13) loadContent(searchInput.value, 'metric');
+    if (e.keyCode === 13) loadContent(searchInput.value);
 });
 
-searchBtn.addEventListener('click', () => loadContent(searchInput.value), 'metric');
+searchBtn.addEventListener('click', () => loadContent(searchInput.value));
 
 unitBtn.addEventListener('click', switchUnits);
 })();
