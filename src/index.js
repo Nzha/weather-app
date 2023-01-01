@@ -12,8 +12,6 @@ const loadContent =  async function loadMainContent(search) {
 
     searchInput.value = `${data.search}, ${data.country}`;
     createPageEl(data);
-
-    return data;
 }
 
 loadContent('Paris');
