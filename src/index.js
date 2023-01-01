@@ -1,14 +1,12 @@
 import './style.css';
 import getAndSaveWeatherData from './weatherData';
-import { default as createPageEl, switchUnits } from './pageEl';
-
-const searchInput = document.querySelector('#search');
-const searchBtn = document.querySelector('.search-btn');
-const unitBtn = document.querySelector('#unit-btn');
+import createPageEl from './pageEl';
 
 const loadContent =  async function loadMainContent(search) {
     if (!search) return;
 
+    const unitBtn = document.querySelector('#unit-btn');
+    const searchInput = document.querySelector('#search');
     const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
     const data = await getAndSaveWeatherData(search, currentUnit);
 
@@ -20,11 +18,4 @@ const loadContent =  async function loadMainContent(search) {
 
 loadContent('Paris');
 
-// Let user press enter to run search
-searchInput.addEventListener('keydown', (e) => {
-    if (e.keyCode === 13) loadContent(searchInput.value);
-});
-
-searchBtn.addEventListener('click', () => loadContent(searchInput.value));
-
-unitBtn.addEventListener('click', switchUnits);
+export default loadContent;
