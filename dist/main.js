@@ -3511,6 +3511,151 @@ function createElement(type, className, parentEl) {
 
 /***/ }),
 
+/***/ "./src/pageEl.js":
+/*!***********************!*\
+  !*** ./src/pageEl.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createPageEl),
+/* harmony export */   "switchUnits": () => (/* binding */ switchUnits)
+/* harmony export */ });
+/* harmony import */ var _miscFn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./miscFn */ "./src/miscFn");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/fromUnixTime/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
+
+
+
+const unitBtn = document.querySelector('#unit-btn');
+
+const createPageEl = function createHTMLPageElements(data) {
+    const searchInput = document.querySelector('#search');
+    const details = document.querySelector('.details');
+    const main = document.querySelector('.main');
+    const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
+    const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
+    const sunsetCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
+
+    // Clear previous entry
+    details.innerHTML = '';
+    main.innerHTML = '';
+
+    // DETAILS
+    const windContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-container', details);
+    const windLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-label', windContainer);
+    const windContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-content', windContainer);
+    const windUnit = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-unit', windContainer);
+    const humidityContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-container', details);
+    const humidityLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-label', humidityContainer);
+    const humidityContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-content', humidityContainer);
+    const sunriseContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-container', details);
+    const sunriseLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-label', sunriseContainer);
+    const sunriseContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-content', sunriseContainer);
+    const sunsetContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-container', details);
+    const sunsetLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-label', sunsetContainer);
+    const sunsetContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-content', sunsetContainer);
+    const visibilityContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-container', details);
+    const visibilityLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-label', visibilityContainer);
+    const visibilityContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-content', visibilityContainer);
+    const pressureContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-container', details);
+    const pressureLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-label', pressureContainer);
+    const pressureContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-content', pressureContainer);
+
+    // MAIN
+    const currentlyContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'currently-container', main);
+    const icon = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('img', 'icon-content', currentlyContainer);
+    const summaryContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summary-container', currentlyContainer);
+    const summaryTempDescContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summaryTempDesc-container', summaryContainer);
+    const tempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'temp-content', summaryTempDescContainer);
+    const mainContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'main-content', summaryTempDescContainer);
+    const summaryHighLowContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summaryHighLow-container', summaryContainer);
+    const feelsLikeContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-container', summaryHighLowContainer);
+    const feelsLikeLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-label', feelsLikeContainer);
+    const feelsLikeContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-content', feelsLikeContainer);
+    const lowTempContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-container', summaryHighLowContainer);
+    const lowTempLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-label', lowTempContainer);
+    const lowTempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-content', lowTempContainer);
+    const highTempContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-container', summaryHighLowContainer);
+    const highTempLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-label', highTempContainer);
+    const highTempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-content', highTempContainer);
+
+    windLabel.textContent = 'Wind:';
+    windContent.textContent = data.wind;
+    humidityLabel.textContent = 'Humidity:';
+    humidityContent.textContent = `${data.humidity}%`;
+    sunriseLabel.textContent = 'Sunrise:';
+    sunsetLabel.textContent = 'Sunset:';
+    visibilityLabel.textContent = 'Visibility:';
+    visibilityContent.textContent = `${(data.visibility / 1000)} km`;
+    pressureLabel.textContent = 'Pressure:';
+    pressureContent.textContent = `${data.pressure} hPa`;
+    
+    icon.src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
+    tempContent.textContent = `${Math.round(data.temp)}°`;
+    mainContent.textContent = data.main;
+    feelsLikeLabel.textContent = 'Feels Like:';
+    feelsLikeContent.textContent = `${Math.round(data.feelslike)}°`;
+    lowTempLabel.textContent = 'Low:';
+    lowTempContent.textContent = `${Math.round(data.tempMin)}°`;
+    highTempLabel.textContent = 'High:';
+    highTempContent.textContent = `${Math.round(data.tempMax)}°`;
+
+    if (currentUnit === 'metric') {
+        windUnit.textContent = 'm/s';
+        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(sunriseCityLocalTime), 'H:mm');
+        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(sunsetCityLocalTime), 'H:mm');
+    } else {
+        windUnit.textContent = 'mph';
+        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(sunriseCityLocalTime), 'h:mm bbbb')
+        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(sunsetCityLocalTime), 'h:mm bbbb');
+    }
+}
+
+const switchUnits = function switchUnitsOfMeasurement() {
+    const windUnit = document.querySelector('.wind-unit');
+    const windContent = document.querySelector('.wind-content');
+    const tempContent = document.querySelector('.temp-content');
+    const feelsLikeContent = document.querySelector('.feels-like-content');
+    const lowTempContent = document.querySelector('.low-temp-content');
+    const highTempContent = document.querySelector('.high-temp-content');
+
+    if (unitBtn.classList.contains('metric')) {
+        unitBtn.classList.remove('metric');
+        unitBtn.classList.add('imperial');
+        unitBtn.textContent = '°F, mph';
+        windContent.textContent = Math.round((windContent.textContent*2.237) * 100) / 100;;
+        windUnit.textContent = 'mph';
+        tempContent.textContent = `${Math.round(cToF(tempContent.textContent.slice(0, -1)))}°`;
+        feelsLikeContent.textContent = `${Math.round(cToF(feelsLikeContent.textContent.slice(0, -1)))}°`;
+        lowTempContent.textContent = `${Math.round(cToF(lowTempContent.textContent.slice(0, -1)))}°`;
+        highTempContent.textContent = `${Math.round(cToF(highTempContent.textContent.slice(0, -1)))}°`;
+    } else {
+        unitBtn.classList.remove('imperial');
+        unitBtn.classList.add('metric');
+        unitBtn.textContent = '°C, m/s';
+        windContent.textContent = Math.round((windContent.textContent/2.237) * 100) / 100;
+        windUnit.textContent = 'm/s';
+        tempContent.textContent = `${Math.round(fToC(tempContent.textContent.slice(0, -1)))}°`;
+        feelsLikeContent.textContent = `${Math.round(fToC(feelsLikeContent.textContent.slice(0, -1)))}°`;
+        lowTempContent.textContent = `${Math.round(fToC(lowTempContent.textContent.slice(0, -1)))}°`;
+        highTempContent.textContent = `${Math.round(fToC(highTempContent.textContent.slice(0, -1)))}°`;
+    }
+}
+
+const cToF = function celsiusToFahrenheit(celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+const fToC = function fahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
+}
+
+
+
+/***/ }),
+
 /***/ "./src/weatherData.js":
 /*!****************************!*\
   !*** ./src/weatherData.js ***!
@@ -3662,11 +3807,8 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-/* harmony import */ var _miscFn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscFn */ "./src/miscFn");
-/* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/fromUnixTime/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
-
+/* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
+/* harmony import */ var _pageEl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pageEl */ "./src/pageEl.js");
 
 
 
@@ -3678,141 +3820,16 @@ const unitBtn = document.querySelector('#unit-btn');
 const loadContent =  async function loadMainContent(search) {
     if (!search) return;
 
-    const details = document.querySelector('.details');
-    const main = document.querySelector('.main');
     const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
-    searchInput.value = '';
-    details.innerHTML = '';
-    main.innerHTML = '';
-
-    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_2__["default"])(search, currentUnit);
-    const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
-    const sunsetCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
+    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search, currentUnit);
 
     searchInput.value = `${data.search}, ${data.country}`;
-
-    // DETAILS
-    const windContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-container', details);
-    const windLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-label', windContainer);
-    const windContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-content', windContainer);
-    const windUnit = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-unit', windContainer);
-    const humidityContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-container', details);
-    const humidityLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-label', humidityContainer);
-    const humidityContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-content', humidityContainer);
-    const sunriseContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunrise-container', details);
-    const sunriseLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunrise-label', sunriseContainer);
-    const sunriseContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunrise-content', sunriseContainer);
-    const sunsetContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunset-container', details);
-    const sunsetLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunset-label', sunsetContainer);
-    const sunsetContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunset-content', sunsetContainer);
-    const visibilityContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'visibility-container', details);
-    const visibilityLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'visibility-label', visibilityContainer);
-    const visibilityContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'visibility-content', visibilityContainer);
-    const pressureContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'pressure-container', details);
-    const pressureLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'pressure-label', pressureContainer);
-    const pressureContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'pressure-content', pressureContainer);
-
-    // MAIN
-    const currentlyContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'currently-container', main);
-    const icon = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('img', 'icon-content', currentlyContainer);
-    const summaryContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'summary-container', currentlyContainer);
-    const summaryTempDescContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'summaryTempDesc-container', summaryContainer);
-    const tempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'temp-content', summaryTempDescContainer);
-    const mainContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'main-content', summaryTempDescContainer);
-    const summaryHighLowContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'summaryHighLow-container', summaryContainer);
-    const feelsLikeContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'feels-like-container', summaryHighLowContainer);
-    const feelsLikeLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'feels-like-label', feelsLikeContainer);
-    const feelsLikeContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'feels-like-content', feelsLikeContainer);
-    const lowTempContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'low-temp-container', summaryHighLowContainer);
-    const lowTempLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'low-temp-label', lowTempContainer);
-    const lowTempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'low-temp-content', lowTempContainer);
-    const highTempContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'high-temp-container', summaryHighLowContainer);
-    const highTempLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'high-temp-label', highTempContainer);
-    const highTempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'high-temp-content', highTempContainer);
-
-    windLabel.textContent = 'Wind:';
-    windContent.textContent = data.wind;
-    humidityLabel.textContent = 'Humidity:';
-    humidityContent.textContent = `${data.humidity}%`;
-    sunriseLabel.textContent = 'Sunrise:';
-    sunsetLabel.textContent = 'Sunset:';
-    visibilityLabel.textContent = 'Visibility:';
-    visibilityContent.textContent = `${(data.visibility / 1000)} km`;
-    pressureLabel.textContent = 'Pressure:';
-    pressureContent.textContent = `${data.pressure} hPa`;
-
-    icon.src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
-    tempContent.textContent = `${Math.round(data.temp)}°`;
-    mainContent.textContent = data.main;
-    feelsLikeLabel.textContent = 'Feels Like:';
-    feelsLikeContent.textContent = `${Math.round(data.feelslike)}°`;
-    lowTempLabel.textContent = 'Low:';
-    lowTempContent.textContent = `${Math.round(data.tempMin)}°`;
-    highTempLabel.textContent = 'High:';
-    highTempContent.textContent = `${Math.round(data.tempMax)}°`;
-
-
-    if (currentUnit === 'metric') {
-        windUnit.textContent = 'm/s';
-        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunriseCityLocalTime), 'H:mm');
-        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunsetCityLocalTime), 'H:mm');
-    } else {
-        windUnit.textContent = 'mph';
-        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunriseCityLocalTime), 'h:mm bbbb')
-        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunsetCityLocalTime), 'h:mm bbbb');
-    }
+    (0,_pageEl__WEBPACK_IMPORTED_MODULE_2__["default"])(data);
 
     return data;
 }
 
-loadContent('Paris', 'metric');
-
-const switchUnits = function switchUnitsOfMeasurement() {
-    const windUnit = document.querySelector('.wind-unit');
-    const windContent = document.querySelector('.wind-content');
-    const tempContent = document.querySelector('.temp-content');
-    const feelsLikeContent = document.querySelector('.feels-like-content');
-    const lowTempContent = document.querySelector('.low-temp-content');
-    const highTempContent = document.querySelector('.high-temp-content');
-
-    if (unitBtn.classList.contains('metric')) {
-        switchUnitBtn('metric');
-        windContent.textContent = Math.round((windContent.textContent*2.237) * 100) / 100;;
-        windUnit.textContent = 'mph';
-        tempContent.textContent = `${Math.round(cToF(tempContent.textContent.slice(0, -1)))}°`;
-        feelsLikeContent.textContent = `${Math.round(cToF(feelsLikeContent.textContent.slice(0, -1)))}°`;
-        lowTempContent.textContent = `${Math.round(cToF(lowTempContent.textContent.slice(0, -1)))}°`;
-        highTempContent.textContent = `${Math.round(cToF(highTempContent.textContent.slice(0, -1)))}°`;
-    } else {
-        switchUnitBtn();
-        windContent.textContent = Math.round((windContent.textContent/2.237) * 100) / 100;
-        windUnit.textContent = 'm/s';
-        tempContent.textContent = `${Math.round(fToC(tempContent.textContent.slice(0, -1)))}°`;
-        feelsLikeContent.textContent = `${Math.round(fToC(feelsLikeContent.textContent.slice(0, -1)))}°`;
-        lowTempContent.textContent = `${Math.round(fToC(lowTempContent.textContent.slice(0, -1)))}°`;
-        highTempContent.textContent = `${Math.round(fToC(highTempContent.textContent.slice(0, -1)))}°`;
-    }
-}
-
-const switchUnitBtn = function switchUnitButton(unit) {
-    if (unit === 'metric') {
-        unitBtn.classList.remove('metric');
-        unitBtn.classList.add('imperial');
-        unitBtn.textContent = '°F, mph';
-    } else {
-        unitBtn.classList.remove('imperial');
-        unitBtn.classList.add('metric');
-        unitBtn.textContent = '°C, m/s';
-    }
-}
-
-const cToF = function celsiusToFahrenheit(celsius) {
-    return (celsius * 9/5) + 32;
-}
-
-const fToC = function fahrenheitToCelsius(fahrenheit) {
-    return (fahrenheit - 32) * 5/9;
-}
+loadContent('Paris');
 
 // Let user press enter to run search
 searchInput.addEventListener('keydown', (e) => {
@@ -3821,7 +3838,7 @@ searchInput.addEventListener('keydown', (e) => {
 
 searchBtn.addEventListener('click', () => loadContent(searchInput.value));
 
-unitBtn.addEventListener('click', switchUnits);
+unitBtn.addEventListener('click', _pageEl__WEBPACK_IMPORTED_MODULE_2__.switchUnits);
 })();
 
 /******/ })()
