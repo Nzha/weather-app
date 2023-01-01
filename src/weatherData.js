@@ -45,7 +45,7 @@ const getAndSaveData = async function getAndSaveWeatherData(search, units) {
     try {
         // If search is a string (i.e. city), get coordinates first, else use coordinates directly
         const getCoordsData = (typeof search === 'string') ? await getCoords(search) : search;
-        
+
         const getWeatherData = await getWeather(getCoordsData, units)
         const saveWeatherData = await saveData(getWeatherData);
 
@@ -58,7 +58,9 @@ const getAndSaveData = async function getAndSaveWeatherData(search, units) {
 
 const errorHandle = function errorHandling() {
     const details = document.querySelector('.details');
+    const main = document.querySelector('.main');
     details.textContent = 'Location not found';
+    main.innerHTML = '';
 }
 
 export default getAndSaveData;
