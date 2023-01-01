@@ -5,8 +5,6 @@ import loadContent from '.';
 const unitBtn = document.querySelector('#unit-btn');
 
 const createPageEl = function createHTMLPageElements(data) {
-    const searchInput = document.querySelector('#search');
-    const searchBtn = document.querySelector('.search-btn');
     const details = document.querySelector('.details');
     const main = document.querySelector('.main');
     const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
@@ -86,13 +84,6 @@ const createPageEl = function createHTMLPageElements(data) {
         sunriseContent.textContent = format(new Date(sunriseCityLocalTime), 'h:mm bbbb')
         sunsetContent.textContent = format(new Date(sunsetCityLocalTime), 'h:mm bbbb');
     }
-
-    // EVENT LISTENERS
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') loadContent(searchInput.value);
-    });
-    searchBtn.addEventListener('click', () => loadContent(searchInput.value));
-    unitBtn.addEventListener('click', switchUnits);
 }
 
 const switchUnits = function switchUnitsOfMeasurement() {
@@ -125,6 +116,20 @@ const switchUnits = function switchUnitsOfMeasurement() {
         highTempContent.textContent = `${Math.round(fToC(highTempContent.textContent.slice(0, -1)))}°`;
     }
 }
+
+const addEventListeners = function addEventListeners() {
+    const searchInput = document.querySelector('#search');
+    const searchBtn = document.querySelector('.search-btn');
+    const unitBtn = document.querySelector('#unit-btn');
+
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') loadContent(searchInput.value);
+    });
+    searchBtn.addEventListener('click', () => loadContent(searchInput.value));
+    unitBtn.addEventListener('click', switchUnits);
+}
+
+addEventListeners();
 
 const cToF = function celsiusToFahrenheit(celsius) {
     return (celsius * 9/5) + 32;
