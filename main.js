@@ -3506,8 +3506,6 @@ const loadContent =  async function loadMainContent(search) {
 
     searchInput.value = `${data.search}, ${data.country}`;
     (0,_pageEl__WEBPACK_IMPORTED_MODULE_2__["default"])(data);
-
-    return data;
 }
 
 loadContent('Paris');
