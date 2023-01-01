@@ -12,23 +12,16 @@ const loadContent =  async function loadMainContent(search) {
 
     const details = document.querySelector('.details');
     const main = document.querySelector('.main');
+    const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
     searchInput.value = '';
     details.innerHTML = '';
     main.innerHTML = '';
-
-    // console.log(search);
-
-    const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
-
-    console.log(currentUnit);
 
     const data = await getAndSaveWeatherData(search, currentUnit);
     const sunriseCityLocalTime = fromUnixTime(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
     const sunsetCityLocalTime = fromUnixTime(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
 
-    // console.log(data.search);
-
-    searchInput.value = `${data.name}, ${data.search}, ${data.country}`;
+    searchInput.value = `${data.search}, ${data.country}`;
 
     // DETAILS
     const windContainer = createEl('div', 'wind-container', details);
@@ -130,9 +123,6 @@ const switchUnits = function switchUnitsOfMeasurement() {
         feelsLikeContent.textContent = `${Math.round(fToC(feelsLikeContent.textContent.slice(0, -1)))}°`;
         lowTempContent.textContent = `${Math.round(fToC(lowTempContent.textContent.slice(0, -1)))}°`;
         highTempContent.textContent = `${Math.round(fToC(highTempContent.textContent.slice(0, -1)))}°`;
-
-        console.log(tempContent.textContent.slice(0, -1));
-        console.log(cToF(tempContent.textContent.slice(0, -1)));
     }
 }
 
