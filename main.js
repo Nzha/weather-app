@@ -3479,6 +3479,43 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
+/* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
+/* harmony import */ var _pageEl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pageEl */ "./src/pageEl.js");
+
+
+
+
+const loadContent =  async function loadMainContent(search) {
+    if (!search) return;
+
+    const unitBtn = document.querySelector('#unit-btn');
+    const searchInput = document.querySelector('#search');
+    const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
+    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search, currentUnit);
+
+    searchInput.value = `${data.search}, ${data.country}`;
+    (0,_pageEl__WEBPACK_IMPORTED_MODULE_2__["default"])(data);
+
+    return data;
+}
+
+loadContent('Paris');
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
+
+/***/ }),
+
 /***/ "./src/miscFn":
 /*!********************!*\
   !*** ./src/miscFn ***!
@@ -3522,9 +3559,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ createPageEl),
 /* harmony export */   "switchUnits": () => (/* binding */ switchUnits)
 /* harmony export */ });
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/fromUnixTime/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
 /* harmony import */ var _miscFn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./miscFn */ "./src/miscFn");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/fromUnixTime/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! . */ "./src/index.js");
+
 
 
 
@@ -3532,11 +3571,12 @@ const unitBtn = document.querySelector('#unit-btn');
 
 const createPageEl = function createHTMLPageElements(data) {
     const searchInput = document.querySelector('#search');
+    const searchBtn = document.querySelector('.search-btn');
     const details = document.querySelector('.details');
     const main = document.querySelector('.main');
     const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
-    const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
-    const sunsetCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
+    const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
+    const sunsetCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
 
     // Clear previous entry
     details.innerHTML = '';
@@ -3591,7 +3631,7 @@ const createPageEl = function createHTMLPageElements(data) {
     visibilityContent.textContent = `${(data.visibility / 1000)} km`;
     pressureLabel.textContent = 'Pressure:';
     pressureContent.textContent = `${data.pressure} hPa`;
-    
+
     icon.src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
     tempContent.textContent = `${Math.round(data.temp)}°`;
     mainContent.textContent = data.main;
@@ -3604,13 +3644,20 @@ const createPageEl = function createHTMLPageElements(data) {
 
     if (currentUnit === 'metric') {
         windUnit.textContent = 'm/s';
-        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(sunriseCityLocalTime), 'H:mm');
-        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(sunsetCityLocalTime), 'H:mm');
+        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(sunriseCityLocalTime), 'H:mm');
+        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(sunsetCityLocalTime), 'H:mm');
     } else {
         windUnit.textContent = 'mph';
-        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(sunriseCityLocalTime), 'h:mm bbbb')
-        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(sunsetCityLocalTime), 'h:mm bbbb');
+        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(sunriseCityLocalTime), 'h:mm bbbb')
+        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(sunsetCityLocalTime), 'h:mm bbbb');
     }
+
+    // EVENT LISTENERS
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') (0,___WEBPACK_IMPORTED_MODULE_1__["default"])(searchInput.value);
+    });
+    searchBtn.addEventListener('click', () => (0,___WEBPACK_IMPORTED_MODULE_1__["default"])(searchInput.value));
+    unitBtn.addEventListener('click', switchUnits);
 }
 
 const switchUnits = function switchUnitsOfMeasurement() {
@@ -3799,48 +3846,12 @@ const errorHandle = function errorHandling() {
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-/* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
-/* harmony import */ var _pageEl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pageEl */ "./src/pageEl.js");
-
-
-
-
-const searchInput = document.querySelector('#search');
-const searchBtn = document.querySelector('.search-btn');
-const unitBtn = document.querySelector('#unit-btn');
-
-const loadContent =  async function loadMainContent(search) {
-    if (!search) return;
-
-    const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
-    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search, currentUnit);
-
-    searchInput.value = `${data.search}, ${data.country}`;
-    (0,_pageEl__WEBPACK_IMPORTED_MODULE_2__["default"])(data);
-
-    return data;
-}
-
-loadContent('Paris');
-
-// Let user press enter to run search
-searchInput.addEventListener('keydown', (e) => {
-    if (e.keyCode === 13) loadContent(searchInput.value);
-});
-
-searchBtn.addEventListener('click', () => loadContent(searchInput.value));
-
-unitBtn.addEventListener('click', _pageEl__WEBPACK_IMPORTED_MODULE_2__.switchUnits);
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=main.js.map
