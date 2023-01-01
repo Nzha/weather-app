@@ -1,26 +1,26 @@
 let weather = {};
 
-const getWeather = async function getCurrentWeatherFromAPI(search, units) {
-    try {
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
-        const geocode = await response.json();
-        const lat = geocode[0].lat;
-        const lon = geocode[0].lon;
-        console.log(geocode);
+const getCoords = async function getLatitudeAndLongitude(search) {
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
+    const geocode = await response.json();
+    console.log(geocode);
 
-        weather.search = geocode[0].name;
+    weather.search = geocode[0].name;
 
-        const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2c90294ffc8f3aba96a28d8de4977cd3&units=${units}`, {mode: 'cors'});
-        const weatherData = await weatherResponse.json();
-        console.log(weatherData);
-
-        return weatherData;
-    } catch (err) {
-        errorHandle();
-    }
+    return geocode;
 }
 
-const saveData = function saveWeatherDataFromAPI(data) {
+const getWeather = async function getWeatherDataFromLatAndLon(coords, units) {
+    const lat = coords[0].lat;
+    const lon = coords[0].lon;
+    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2c90294ffc8f3aba96a28d8de4977cd3&units=${units}`, {mode: 'cors'});
+    const weatherData = await weatherResponse.json();
+    console.log(weatherData);
+
+    return weatherData;
+}
+
+const saveData = function storeDataInObject(data) {
     weather.country = data.sys.country;
     weather.description = data.weather[0].description;
     weather.feelslike = data.main.feels_like;
@@ -42,11 +42,18 @@ const saveData = function saveWeatherDataFromAPI(data) {
 }
 
 const getAndSaveData = async function getAndSaveWeatherData(search, units) {
-    const getWeatherData = await getWeather(search, units);
-    const saveWeatherData = await saveData(getWeatherData);
+    try {
+        // If search is a string (i.e. city), get coordinates first, else use coordinates directly
+        const getCoordsData = (typeof search === 'string') ? await getCoords(search) : search;
+        
+        const getWeatherData = await getWeather(getCoordsData, units)
+        const saveWeatherData = await saveData(getWeatherData);
 
-    console.log(saveWeatherData);
-    return saveWeatherData;
+        console.log(saveWeatherData);
+        return saveWeatherData;
+    } catch(error) {
+        errorHandle();
+    }
 }
 
 const errorHandle = function errorHandling() {
