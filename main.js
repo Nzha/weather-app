@@ -3492,7 +3492,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/fromUnixTime/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
-/* harmony import */ var _miscFn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./miscFn */ "./src/miscFn");
+/* harmony import */ var _miscFn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./miscFn.js */ "./src/miscFn.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! . */ "./src/index.js");
 /* harmony import */ var _geolocation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./geolocation */ "./src/geolocation.js");
 
@@ -3514,43 +3514,43 @@ const createPageEl = function createHTMLPageElements(data) {
     main.innerHTML = '';
 
     // DETAILS
-    const windContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-container', details);
-    const windLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-label', windContainer);
-    const windContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-content', windContainer);
-    const windUnit = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-unit', windContainer);
-    const humidityContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-container', details);
-    const humidityLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-label', humidityContainer);
-    const humidityContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-content', humidityContainer);
-    const sunriseContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-container', details);
-    const sunriseLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-label', sunriseContainer);
-    const sunriseContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-content', sunriseContainer);
-    const sunsetContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-container', details);
-    const sunsetLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-label', sunsetContainer);
-    const sunsetContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-content', sunsetContainer);
-    const visibilityContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-container', details);
-    const visibilityLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-label', visibilityContainer);
-    const visibilityContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-content', visibilityContainer);
-    const pressureContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-container', details);
-    const pressureLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-label', pressureContainer);
-    const pressureContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-content', pressureContainer);
+    const windContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-container', details);
+    const windLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-label', windContainer);
+    const windContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-content', windContainer);
+    const windUnit = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-unit', windContainer);
+    const humidityContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-container', details);
+    const humidityLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-label', humidityContainer);
+    const humidityContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-content', humidityContainer);
+    const sunriseContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-container', details);
+    const sunriseLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-label', sunriseContainer);
+    const sunriseContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-content', sunriseContainer);
+    const sunsetContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-container', details);
+    const sunsetLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-label', sunsetContainer);
+    const sunsetContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-content', sunsetContainer);
+    const visibilityContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-container', details);
+    const visibilityLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-label', visibilityContainer);
+    const visibilityContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-content', visibilityContainer);
+    const pressureContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-container', details);
+    const pressureLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-label', pressureContainer);
+    const pressureContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-content', pressureContainer);
 
     // MAIN
-    const currentlyContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'currently-container', main);
-    const icon = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('img', 'icon-content', currentlyContainer);
-    const summaryContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summary-container', currentlyContainer);
-    const summaryTempDescContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summaryTempDesc-container', summaryContainer);
-    const tempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'temp-content', summaryTempDescContainer);
-    const mainContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'main-content', summaryTempDescContainer);
-    const summaryHighLowContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summaryHighLow-container', summaryContainer);
-    const feelsLikeContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-container', summaryHighLowContainer);
-    const feelsLikeLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-label', feelsLikeContainer);
-    const feelsLikeContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-content', feelsLikeContainer);
-    const lowTempContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-container', summaryHighLowContainer);
-    const lowTempLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-label', lowTempContainer);
-    const lowTempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-content', lowTempContainer);
-    const highTempContainer = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-container', summaryHighLowContainer);
-    const highTempLabel = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-label', highTempContainer);
-    const highTempContent = (0,_miscFn__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-content', highTempContainer);
+    const currentlyContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'currently-container', main);
+    const icon = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('img', 'icon-content', currentlyContainer);
+    const summaryContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summary-container', currentlyContainer);
+    const summaryTempDescContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summaryTempDesc-container', summaryContainer);
+    const tempContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'temp-content', summaryTempDescContainer);
+    const mainContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'main-content', summaryTempDescContainer);
+    const summaryHighLowContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summaryHighLow-container', summaryContainer);
+    const feelsLikeContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-container', summaryHighLowContainer);
+    const feelsLikeLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-label', feelsLikeContainer);
+    const feelsLikeContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-content', feelsLikeContainer);
+    const lowTempContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-container', summaryHighLowContainer);
+    const lowTempLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-label', lowTempContainer);
+    const lowTempContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-content', lowTempContainer);
+    const highTempContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-container', summaryHighLowContainer);
+    const highTempLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-label', highTempContainer);
+    const highTempContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-content', highTempContainer);
 
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
@@ -3709,10 +3709,10 @@ loadContent('Paris');
 
 /***/ }),
 
-/***/ "./src/miscFn":
-/*!********************!*\
-  !*** ./src/miscFn ***!
-  \********************/
+/***/ "./src/miscFn.js":
+/*!***********************!*\
+  !*** ./src/miscFn.js ***!
+  \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
