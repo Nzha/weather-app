@@ -1,5 +1,5 @@
 import { fromUnixTime, format } from 'date-fns';
-import createEl from './miscFn';
+import createEl from './miscFn.js';
 import loadContent from '.';
 import getUserLocation from './geolocation';
 
