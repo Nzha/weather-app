@@ -1,7 +1,12 @@
+import _ from 'lodash';
+
+const APIKey = '2c90294ffc8f3aba96a28d8de4977cd3'
+
 let weather = {};
+let forecast = {};
 
 const getCoords = async function getLatitudeAndLongitude(search) {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=2c90294ffc8f3aba96a28d8de4977cd3`, {mode: 'cors'});
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${APIKey}`, {mode: 'cors'});
     const geocode = await response.json();
     console.log(geocode);
 
@@ -10,17 +15,27 @@ const getCoords = async function getLatitudeAndLongitude(search) {
     return geocode;
 }
 
-const getWeather = async function getWeatherDataFromLatAndLon(coords, units) {
+const getCurrentWeather = async function getCurrentWeatherDataFromCoords(coords, units) {
     const lat = coords[0].lat;
     const lon = coords[0].lon;
-    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2c90294ffc8f3aba96a28d8de4977cd3&units=${units}`, {mode: 'cors'});
+    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}&units=${units}`, {mode: 'cors'});
     const weatherData = await weatherResponse.json();
     console.log(weatherData);
 
     return weatherData;
 }
 
-const saveData = function storeDataInObject(data) {
+const getForecastWeather = async function getForecastWeatherDataFromCoords(coords, units) {
+    const lat = coords[0].lat;
+    const lon = coords[0].lon;
+    const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=${units}`, {mode: 'cors'});
+    const weatherData = await weatherResponse.json();
+    console.log(weatherData);
+
+    return weatherData;
+}
+
+const saveCurrentData = function storeCurrentDataInObject(data) {
     weather.country = data.sys.country;
     weather.description = data.weather[0].description;
     weather.feelslike = data.main.feels_like;
@@ -41,16 +56,34 @@ const saveData = function storeDataInObject(data) {
     return weather;
 }
 
+const saveForecastData = function storeForecastDataInObject(data) {
+    // Filter data for 5 days at 9 a.m. (API send data for every 3 hours)
+    const fiveDays = data.list.filter(el => el.dt_txt.includes('09:00'));
+
+    const dataByDay = _.groupBy(data.list, el => el.dt_txt.slice(0,10));
+    const highLow = _.mapValues(dataByDay, el => ({
+        min: _.min(_.map(el, 'main.temp_min')),
+        max: _.max(_.map(el, 'main.temp_max')),
+    }));
+
+
+    console.log(dataByDay);
+    console.log(highLow);
+}
+
 const getAndSaveData = async function getAndSaveWeatherData(search, units) {
     try {
         // If search is a string (i.e. city), get coordinates first, else use coordinates directly
         const getCoordsData = (typeof search === 'string') ? await getCoords(search) : search;
 
-        const getWeatherData = await getWeather(getCoordsData, units)
-        const saveWeatherData = await saveData(getWeatherData);
+        const getCurrentWeatherData = await getCurrentWeather(getCoordsData, units);
+        const getForecastWeatherData = await getForecastWeather(getCoordsData, units);
+        const saveCurrentWeatherData = await saveCurrentData(getCurrentWeatherData);
+        console.log(saveCurrentWeatherData);
+        const saveForecastWeatherData = await saveForecastData(getForecastWeatherData);
+        console.log(saveForecastWeatherData);
 
-        console.log(saveWeatherData);
-        return saveWeatherData;
+        return saveCurrentWeatherData;
     } catch(error) {
         errorHandle();
     }
