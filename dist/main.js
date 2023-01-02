@@ -3479,94 +3479,10 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-/* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
-/* harmony import */ var _pageEl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pageEl */ "./src/pageEl.js");
-
-
-
-
-const locationBtn = document.querySelector('.location-btn');
-
-const loadContent =  async function loadMainContent(search) {
-    if (!search) return;
-
-    const unitBtn = document.querySelector('#unit-btn');
-    const searchInput = document.querySelector('#search');
-    const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
-    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search, currentUnit);
-
-    // In case of geolocation (no search), display data name instead of search
-    if (typeof search !== 'string') data.search = data.name;
-    searchInput.value = `${data.search}, ${data.country}`;
-
-    (0,_pageEl__WEBPACK_IMPORTED_MODULE_2__["default"])(data);
-}
-
-loadContent('Paris');
-
-const getUserLocation = function getUserLocation() {
-    navigator.geolocation.getCurrentPosition(success);
-}
-
-const success = async function getLocationSuccess(position) {
-    const coords = position.coords;
-    const coordsLatLon = [{lat: coords.latitude, lon: coords.longitude}]
-    loadContent(coordsLatLon);
-}
-
-locationBtn.addEventListener('click', getUserLocation);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
-
-/***/ }),
-
-/***/ "./src/miscFn":
+/***/ "./src/DOM.js":
 /*!********************!*\
-  !*** ./src/miscFn ***!
+  !*** ./src/DOM.js ***!
   \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ createElement)
-/* harmony export */ });
-function createElement(type, className, parentEl) {
-    const element = document.createElement(type);
-    element.classList.add(className);
-
-    /**
-    * If parent element has been previously created via this function
-    * (e.g: const span3 = createEl2('span', 'span3', taskDescriptionDiv))
-    */
-    if (parentEl.element) {
-        parentEl.element.appendChild(element);
-    // (e.g: const span3 = document.createElement('span');)
-    } else {
-        parentEl.appendChild(element);
-    }
-
-    return element
-}
-
-
-
-/***/ }),
-
-/***/ "./src/pageEl.js":
-/*!***********************!*\
-  !*** ./src/pageEl.js ***!
-  \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -3574,10 +3490,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ createPageEl),
 /* harmony export */   "switchUnits": () => (/* binding */ switchUnits)
 /* harmony export */ });
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/fromUnixTime/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/fromUnixTime/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
 /* harmony import */ var _miscFn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./miscFn */ "./src/miscFn");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! . */ "./src/index.js");
+/* harmony import */ var _geolocation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./geolocation */ "./src/geolocation.js");
+
 
 
 
@@ -3588,8 +3506,8 @@ const createPageEl = function createHTMLPageElements(data) {
     const details = document.querySelector('.details');
     const main = document.querySelector('.main');
     const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
-    const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
-    const sunsetCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
+    const sunriseCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunrise + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
+    const sunsetCityLocalTime = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(data.sunset + data.timezone).toLocaleString("en-US", {timeZone: "UTC"});
 
     // Clear previous entry
     details.innerHTML = '';
@@ -3657,12 +3575,12 @@ const createPageEl = function createHTMLPageElements(data) {
 
     if (currentUnit === 'metric') {
         windUnit.textContent = 'm/s';
-        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(sunriseCityLocalTime), 'H:mm');
-        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(sunsetCityLocalTime), 'H:mm');
+        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunriseCityLocalTime), 'H:mm');
+        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunsetCityLocalTime), 'H:mm');
     } else {
         windUnit.textContent = 'mph';
-        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(sunriseCityLocalTime), 'h:mm bbbb')
-        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(sunsetCityLocalTime), 'h:mm bbbb');
+        sunriseContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunriseCityLocalTime), 'h:mm bbbb')
+        sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(sunsetCityLocalTime), 'h:mm bbbb');
     }
 }
 
@@ -3698,10 +3616,12 @@ const switchUnits = function switchUnitsOfMeasurement() {
 }
 
 const addEventListeners = function addEventListeners() {
+    const locationBtn = document.querySelector('.location-btn');
     const searchInput = document.querySelector('#search');
     const searchBtn = document.querySelector('.search-btn');
     const unitBtn = document.querySelector('#unit-btn');
 
+    locationBtn.addEventListener('click', _geolocation__WEBPACK_IMPORTED_MODULE_2__["default"]);
     searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') (0,___WEBPACK_IMPORTED_MODULE_1__["default"])(searchInput.value);
     });
@@ -3717,6 +3637,104 @@ const cToF = function celsiusToFahrenheit(celsius) {
 
 const fToC = function fahrenheitToCelsius(fahrenheit) {
     return (fahrenheit - 32) * 5/9;
+}
+
+
+
+/***/ }),
+
+/***/ "./src/geolocation.js":
+/*!****************************!*\
+  !*** ./src/geolocation.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./src/index.js");
+
+
+const getUserLocation = function getUserLocation() {
+    navigator.geolocation.getCurrentPosition(success);
+}
+
+const success = async function getLocationSuccess(position) {
+    const coords = position.coords;
+    const coordsLatLon = [{lat: coords.latitude, lon: coords.longitude}]
+    ;(0,___WEBPACK_IMPORTED_MODULE_0__["default"])(coordsLatLon);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getUserLocation);
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
+/* harmony import */ var _weatherData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherData */ "./src/weatherData.js");
+/* harmony import */ var _DOM__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DOM */ "./src/DOM.js");
+
+
+
+
+const loadContent =  async function loadMainContent(search) {
+    if (!search) return;
+
+    const unitBtn = document.querySelector('#unit-btn');
+    const searchInput = document.querySelector('#search');
+    const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
+    const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search, currentUnit);
+
+    // In case of geolocation (no search), display data name instead of search
+    if (typeof search !== 'string') data.search = data.name;
+    
+    searchInput.value = `${data.search}, ${data.country}`;
+
+    (0,_DOM__WEBPACK_IMPORTED_MODULE_2__["default"])(data);
+}
+
+loadContent('Paris');
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
+
+/***/ }),
+
+/***/ "./src/miscFn":
+/*!********************!*\
+  !*** ./src/miscFn ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createElement)
+/* harmony export */ });
+function createElement(type, className, parentEl) {
+    const element = document.createElement(type);
+    element.classList.add(className);
+
+    /**
+    * If parent element has been previously created via this function
+    * (e.g: const span3 = createEl2('span', 'span3', taskDescriptionDiv))
+    */
+    if (parentEl.element) {
+        parentEl.element.appendChild(element);
+    // (e.g: const span3 = document.createElement('span');)
+    } else {
+        parentEl.appendChild(element);
+    }
+
+    return element
 }
 
 

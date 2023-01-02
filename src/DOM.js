@@ -1,6 +1,7 @@
 import { fromUnixTime, format } from 'date-fns';
 import createEl from './miscFn';
 import loadContent from '.';
+import getUserLocation from './geolocation';
 
 const unitBtn = document.querySelector('#unit-btn');
 
@@ -118,10 +119,12 @@ const switchUnits = function switchUnitsOfMeasurement() {
 }
 
 const addEventListeners = function addEventListeners() {
+    const locationBtn = document.querySelector('.location-btn');
     const searchInput = document.querySelector('#search');
     const searchBtn = document.querySelector('.search-btn');
     const unitBtn = document.querySelector('#unit-btn');
 
+    locationBtn.addEventListener('click', getUserLocation);
     searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') loadContent(searchInput.value);
     });
