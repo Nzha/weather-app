@@ -3,7 +3,6 @@ import _ from 'lodash';
 const APIKey = '2c90294ffc8f3aba96a28d8de4977cd3'
 
 let weather = {};
-let forecast = {};
 
 const getCoords = async function getLatitudeAndLongitude(search) {
     const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${APIKey}`, {mode: 'cors'});
@@ -57,18 +56,14 @@ const saveCurrentData = function storeCurrentDataInObject(data) {
 }
 
 const saveForecastData = function storeForecastDataInObject(data) {
-    // Filter data for 5 days at 9 a.m. (API send data for every 3 hours)
-    const fiveDays = data.list.filter(el => el.dt_txt.includes('09:00'));
-
     const dataByDay = _.groupBy(data.list, el => el.dt_txt.slice(0,10));
-    const highLow = _.mapValues(dataByDay, el => ({
-        min: _.min(_.map(el, 'main.temp_min')),
-        max: _.max(_.map(el, 'main.temp_max')),
+    const forecast = _.mapValues(dataByDay, el => ({
+        icon: el[0].weather[0].icon,
+        temp_min: _.min(_.map(el, 'main.temp_min')),
+        temp_max: _.max(_.map(el, 'main.temp_max')),
     }));
 
-
-    console.log(dataByDay);
-    console.log(highLow);
+    return forecast;
 }
 
 const getAndSaveData = async function getAndSaveWeatherData(search, units) {
