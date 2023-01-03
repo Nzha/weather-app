@@ -126,7 +126,6 @@ const switchUnits = function switchUnitsOfMeasurement() {
         highTempContent.textContent = `${Math.round(cToF(highTempContent.textContent.slice(0, -1)))}°`;
         forecastHighs.forEach(forecastHigh => forecastHigh.textContent = `${Math.round(cToF(forecastHigh.textContent.slice(0, -1)))}°`);
         forecastLows.forEach(forecastLow => forecastLow.textContent = `${Math.round(cToF(forecastLow.textContent.slice(0, -1)))}°`);
-
     } else {
         unitBtn.classList.remove('imperial');
         unitBtn.classList.add('metric');
