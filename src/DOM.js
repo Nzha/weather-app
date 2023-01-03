@@ -79,19 +79,16 @@ const createPageEl = function createHTMLPageElements(data) {
     highTempLabel.textContent = 'High:';
     highTempContent.textContent = `${Math.round(data.tempMax)}°`;
 
-
-    const days = data.forecast;
-
-    for (const day of days) {
-        const dailyContainer = createEl('div', 'daily-container', forecastContainer);
-        const forecastDay = createEl('div', 'forecast-day', dailyContainer);
-        const forecastIcon = createEl('img', 'forecast-icon', dailyContainer);
-        const forecastHighLow = createEl('div', 'forecast-highlow', dailyContainer);
+    data.forecast.forEach(day => {
+        const forecastDailyContainer = createEl('div', 'forecast-daily-container', forecastContainer);
+        const forecastDay = createEl('div', 'forecast-day', forecastDailyContainer);
+        const forecastIcon = createEl('img', 'forecast-icon', forecastDailyContainer);
+        const forecastHighLow = createEl('div', 'forecast-highlow', forecastDailyContainer);
 
         forecastDay.textContent = day.key;
         forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon}.png`;
         forecastHighLow.textContent = `${day.value.temp_max}°`;
-    }
+    });
 
     if (currentUnit === 'metric') {
         windUnit.textContent = 'm/s';

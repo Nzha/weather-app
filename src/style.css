@@ -166,7 +166,18 @@ header {
 .forecast-container {
     display: flex;
     justify-content: center;
+    gap: 1rem;
     padding-top: 1rem;
+}
+
+.forecast-daily-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border: 1px solid #eeeeee;
+    border-radius: 15px;
 }
 
 @media only screen and (min-width: 1400px) {
