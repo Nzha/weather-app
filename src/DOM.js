@@ -83,11 +83,14 @@ const createPageEl = function createHTMLPageElements(data) {
         const forecastDailyContainer = createEl('div', 'forecast-daily-container', forecastContainer);
         const forecastDay = createEl('div', 'forecast-day', forecastDailyContainer);
         const forecastIcon = createEl('img', 'forecast-icon', forecastDailyContainer);
-        const forecastHighLow = createEl('div', 'forecast-highlow', forecastDailyContainer);
+        const forecastHighLowContainer = createEl('div', 'forecast-highlow-container', forecastDailyContainer);
+        const forecastHigh = createEl('div', 'forecast-high', forecastHighLowContainer);
+        const forecastLow= createEl('div', 'forecast-low', forecastHighLowContainer);
 
-        forecastDay.textContent = day.key;
+        forecastDay.textContent = format(new Date(day.key), 'E');
         forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon}.png`;
-        forecastHighLow.textContent = `${day.value.temp_max}°`;
+        forecastHigh.textContent = `${Math.round(day.value.temp_max)}°`;
+        forecastLow.textContent = `${Math.round(day.value.temp_min)}°`;
     });
 
     if (currentUnit === 'metric') {

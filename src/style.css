@@ -180,6 +180,15 @@ header {
     border-radius: 15px;
 }
 
+.forecast-highlow-container {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.forecast-low {
+    color: #70757a;
+}
+
 @media only screen and (min-width: 1400px) {
     #search {
         width: 35%;
