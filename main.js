@@ -20840,7 +20840,7 @@ const createPageEl = function createHTMLPageElements(data) {
         const forecastIcon = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('img', 'forecast-icon', forecastDailyContainer);
         const forecastHighLowContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-highlow-container', forecastDailyContainer);
         const forecastHigh = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-high', forecastHighLowContainer);
-        const forecastLow= (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-low', forecastHighLowContainer);
+        const forecastLow = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-low', forecastHighLowContainer);
 
         forecastDay.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(day.key), 'E');
         forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon}.png`;
@@ -20866,6 +20866,8 @@ const switchUnits = function switchUnitsOfMeasurement() {
     const feelsLikeContent = document.querySelector('.feels-like-content');
     const lowTempContent = document.querySelector('.low-temp-content');
     const highTempContent = document.querySelector('.high-temp-content');
+    const forecastHighs = document.querySelectorAll('.forecast-high');
+    const forecastLows = document.querySelectorAll('.forecast-low');
 
     if (unitBtn.classList.contains('metric')) {
         unitBtn.classList.remove('metric');
@@ -20877,6 +20879,9 @@ const switchUnits = function switchUnitsOfMeasurement() {
         feelsLikeContent.textContent = `${Math.round(cToF(feelsLikeContent.textContent.slice(0, -1)))}°`;
         lowTempContent.textContent = `${Math.round(cToF(lowTempContent.textContent.slice(0, -1)))}°`;
         highTempContent.textContent = `${Math.round(cToF(highTempContent.textContent.slice(0, -1)))}°`;
+        forecastHighs.forEach(forecastHigh => forecastHigh.textContent = `${Math.round(cToF(forecastHigh.textContent.slice(0, -1)))}°`);
+        forecastLows.forEach(forecastLow => forecastLow.textContent = `${Math.round(cToF(forecastLow.textContent.slice(0, -1)))}°`);
+
     } else {
         unitBtn.classList.remove('imperial');
         unitBtn.classList.add('metric');
@@ -20887,6 +20892,8 @@ const switchUnits = function switchUnitsOfMeasurement() {
         feelsLikeContent.textContent = `${Math.round(fToC(feelsLikeContent.textContent.slice(0, -1)))}°`;
         lowTempContent.textContent = `${Math.round(fToC(lowTempContent.textContent.slice(0, -1)))}°`;
         highTempContent.textContent = `${Math.round(fToC(highTempContent.textContent.slice(0, -1)))}°`;
+        forecastHighs.forEach(forecastHigh => forecastHigh.textContent = `${Math.round(fToC(forecastHigh.textContent.slice(0, -1)))}°`);
+        forecastLows.forEach(forecastLow => forecastLow.textContent = `${Math.round(fToC(forecastLow.textContent.slice(0, -1)))}°`);
     }
 }
 
