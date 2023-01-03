@@ -58,12 +58,17 @@ const saveCurrentData = function storeCurrentDataInObject(data) {
 const saveForecastData = function storeForecastDataInObject(data) {
     const dataByDay = _.groupBy(data.list, el => el.dt_txt.slice(0,10));
     const forecast = _.mapValues(dataByDay, el => ({
-        icon: el[0].weather[0].icon,
-        temp_min: _.min(_.map(el, 'main.temp_min')),
-        temp_max: _.max(_.map(el, 'main.temp_max')),
-    }));
+            icon: el[0].weather[0].icon,
+            temp_min: _.min(_.map(el, 'main.temp_min')),
+            temp_max: _.max(_.map(el, 'main.temp_max')),
+        }));
 
-    return forecast;
+    // Save to an array
+    const forecastArr = Object.keys(forecast).map(key => ({ key, value: forecast[key] }))
+
+    weather.forecast = forecastArr;
+
+    return weather;
 }
 
 const getAndSaveData = async function getAndSaveWeatherData(search, units) {
@@ -74,7 +79,6 @@ const getAndSaveData = async function getAndSaveWeatherData(search, units) {
         const getCurrentWeatherData = await getCurrentWeather(getCoordsData, units);
         const getForecastWeatherData = await getForecastWeather(getCoordsData, units);
         const saveCurrentWeatherData = await saveCurrentData(getCurrentWeatherData);
-        console.log(saveCurrentWeatherData);
         const saveForecastWeatherData = await saveForecastData(getForecastWeatherData);
         console.log(saveForecastWeatherData);
 

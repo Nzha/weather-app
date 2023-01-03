@@ -138,7 +138,7 @@ header {
     grid-area: main;
 }
 
-.currently-container {
+.current-container {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
@@ -161,6 +161,12 @@ header {
 .summaryHighLow-container {
     display: flex;
     gap: 0.5rem;
+}
+
+.forecast-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
 }
 
 @media only screen and (min-width: 1400px) {

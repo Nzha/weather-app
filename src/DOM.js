@@ -37,10 +37,10 @@ const createPageEl = function createHTMLPageElements(data) {
     const pressureLabel = createEl('div', 'pressure-label', pressureContainer);
     const pressureContent = createEl('div', 'pressure-content', pressureContainer);
 
-    // MAIN
-    const currentlyContainer = createEl('div', 'currently-container', main);
-    const icon = createEl('img', 'icon-content', currentlyContainer);
-    const summaryContainer = createEl('div', 'summary-container', currentlyContainer);
+    // MAIN - Current weather
+    const currentContainer = createEl('div', 'current-container', main);
+    const icon = createEl('img', 'icon-content', currentContainer);
+    const summaryContainer = createEl('div', 'summary-container', currentContainer);
     const summaryTempDescContainer = createEl('div', 'summaryTempDesc-container', summaryContainer);
     const tempContent = createEl('div', 'temp-content', summaryTempDescContainer);
     const mainContent = createEl('div', 'main-content', summaryTempDescContainer);
@@ -54,6 +54,9 @@ const createPageEl = function createHTMLPageElements(data) {
     const highTempContainer = createEl('div', 'high-temp-container', summaryHighLowContainer);
     const highTempLabel = createEl('div', 'high-temp-label', highTempContainer);
     const highTempContent = createEl('div', 'high-temp-content', highTempContainer);
+
+    // MAIN - Forecast
+    const forecastContainer = createEl('div', 'forecast-container', main);
 
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
@@ -75,6 +78,20 @@ const createPageEl = function createHTMLPageElements(data) {
     lowTempContent.textContent = `${Math.round(data.tempMin)}°`;
     highTempLabel.textContent = 'High:';
     highTempContent.textContent = `${Math.round(data.tempMax)}°`;
+
+
+    const days = data.forecast;
+
+    for (const day of days) {
+        const dailyContainer = createEl('div', 'daily-container', forecastContainer);
+        const forecastDay = createEl('div', 'forecast-day', dailyContainer);
+        const forecastIcon = createEl('img', 'forecast-icon', dailyContainer);
+        const forecastHighLow = createEl('div', 'forecast-highlow', dailyContainer);
+
+        forecastDay.textContent = day.key;
+        forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon}.png`;
+        forecastHighLow.textContent = `${day.value.temp_max}°`;
+    }
 
     if (currentUnit === 'metric') {
         windUnit.textContent = 'm/s';
