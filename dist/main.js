@@ -21098,7 +21098,7 @@ const saveCurrentData = function storeCurrentDataInObject(data) {
 const saveForecastData = function storeForecastDataInObject(data) {
     const dataByDay = lodash__WEBPACK_IMPORTED_MODULE_0___default().groupBy(data.list, el => el.dt_txt.slice(0,10));
     const forecast = lodash__WEBPACK_IMPORTED_MODULE_0___default().mapValues(dataByDay, el => ({
-            icon: (el[3]) ? el[3].weather[0].icon : el[0].weather[0].icon,
+            icon: (el[3]) ? el[3].weather[0].icon : el[0].weather[0].icon, // el[3] = 9:00 a.m
             temp_min: lodash__WEBPACK_IMPORTED_MODULE_0___default().min(lodash__WEBPACK_IMPORTED_MODULE_0___default().map(el, 'main.temp_min')),
             temp_max: lodash__WEBPACK_IMPORTED_MODULE_0___default().max(lodash__WEBPACK_IMPORTED_MODULE_0___default().map(el, 'main.temp_max')),
         }));

@@ -58,7 +58,7 @@ const saveCurrentData = function storeCurrentDataInObject(data) {
 const saveForecastData = function storeForecastDataInObject(data) {
     const dataByDay = _.groupBy(data.list, el => el.dt_txt.slice(0,10));
     const forecast = _.mapValues(dataByDay, el => ({
-            icon: (el[3]) ? el[3].weather[0].icon : el[0].weather[0].icon,
+            icon: (el[3]) ? el[3].weather[0].icon : el[0].weather[0].icon, // el[3] = 9:00 a.m
             temp_min: _.min(_.map(el, 'main.temp_min')),
             temp_max: _.max(_.map(el, 'main.temp_max')),
         }));
