@@ -88,7 +88,7 @@ const createPageEl = function createHTMLPageElements(data) {
         const forecastLow = createEl('div', 'forecast-low', forecastHighLowContainer);
 
         forecastDay.textContent = format(new Date(day.key), 'E');
-        forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon}.png`;
+        forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon.slice(0, -1)}d.png`;
         forecastHigh.textContent = `${Math.round(day.value.temp_max)}°`;
         forecastLow.textContent = `${Math.round(day.value.temp_min)}°`;
     });

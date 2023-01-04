@@ -20843,7 +20843,7 @@ const createPageEl = function createHTMLPageElements(data) {
         const forecastLow = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-low', forecastHighLowContainer);
 
         forecastDay.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(day.key), 'E');
-        forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon}.png`;
+        forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon.slice(0, -1)}d.png`;
         forecastHigh.textContent = `${Math.round(day.value.temp_max)}°`;
         forecastLow.textContent = `${Math.round(day.value.temp_min)}°`;
     });
