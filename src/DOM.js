@@ -3,6 +3,12 @@ import createEl from './miscFn.js';
 import loadContent from '.';
 import getUserLocation from './geolocation';
 
+// WIP
+
+import L from "leaflet";
+
+// WIP
+
 const unitBtn = document.querySelector('#unit-btn');
 
 const createPageEl = function createHTMLPageElements(data) {
@@ -57,6 +63,38 @@ const createPageEl = function createHTMLPageElements(data) {
 
     // MAIN - Forecast
     const forecastContainer = createEl('div', 'forecast-container', main);
+
+
+
+    // WIP
+
+    // const mapContainer = createEl('div', 'map-container', main);
+    // const map = createEl('img', 'map', mapContainer);
+
+    // map.src = 'http://tile.openweathermap.org/map/temp_new/1/1/0.png?appid=2c90294ffc8f3aba96a28d8de4977cd3';
+    // map.src = data.mapURL
+
+    // LAT LON
+    // var map = L.map("map").setView([51.505, -0.09], 13);
+    // const map = L.map('map').setView([48.86, 2.32], 5);
+    // const map = L.map('map').setView([25.15, 55.30], 4);
+
+    map.remove();
+
+    const map = L.map('map').setView([data.lat, data.lon], 4);
+
+    // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
+    // L.tileLayer('https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {mode: 'cors'}, {
+    // L.tileLayer(data.mapURL, {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // WIP
+
+
+
 
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;

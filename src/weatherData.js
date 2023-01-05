@@ -40,6 +40,15 @@ const saveCurrentData = function storeCurrentDataInObject(data) {
     weather.feelslike = data.main.feels_like;
     weather.humidity = data.main.humidity;
     weather.icon = data.weather[0].icon;
+
+    // WIP
+
+    weather.lat = data.coord.lat;
+    weather.lon = data.coord.lon;
+
+    // WIP
+
+
     weather.main = data.weather[0].main;
     weather.name = data.name;
     weather.pressure = data.main.pressure;
@@ -71,6 +80,39 @@ const saveForecastData = function storeForecastDataInObject(data) {
     return weather;
 }
 
+
+
+
+// WIP
+
+const getWeatherMap = async function getWeatherMapFromCoords(coords) {
+    const layer = 'temp_new';
+    const zoomLevel = 1;
+    // const lat = coords[0].lat;
+    // const lon = coords[0].lon;
+    const lat = 2.32;
+    const lon = 48.86;
+    const xTile = lon2tile(lat, zoomLevel);
+    console.log(xTile);
+    const yTile = lat2tile(lon, zoomLevel);
+    console.log(yTile);
+
+    const weatherMapResponse = await fetch(`http://tile.openweathermap.org/map/${layer}/${zoomLevel}/${xTile}/${yTile}.png?appid=${APIKey}`, {mode: 'cors'});
+    const weatherMapBlob = await weatherMapResponse.blob();
+    const weatherMapObjectURL = URL.createObjectURL(weatherMapBlob);
+    console.log(weatherMapObjectURL);
+
+    weather.mapURL = weatherMapObjectURL;
+
+    return weatherMapObjectURL;
+}
+
+// WIP
+
+
+
+
+
 const getAndSaveData = async function getAndSaveWeatherData(search, units) {
     try {
         // If search is a string (i.e. city), get coordinates first, else use coordinates directly
@@ -82,13 +124,23 @@ const getAndSaveData = async function getAndSaveWeatherData(search, units) {
         const saveForecastWeatherData = await saveForecastData(getForecastWeatherData);
         console.log(saveForecastWeatherData);
 
+
+        // WIP
+
+        // const test = await getWeatherMap(getCoordsData);
+        // console.log(test);
+
+        // WIP
+
+
         return saveCurrentWeatherData;
     } catch(error) {
-        errorHandle();
+        errorHandle(error);
     }
 }
 
-const errorHandle = function errorHandling() {
+const errorHandle = function errorHandling(error) {
+    console.log(error);
     const details = document.querySelector('.details');
     const main = document.querySelector('.main');
     details.textContent = 'Location not found';
@@ -96,3 +148,17 @@ const errorHandle = function errorHandling() {
 }
 
 export default getAndSaveData;
+
+
+
+// WIP
+
+function lon2tile(lon,zoom) {
+    return (Math.floor((lon+180)/360*Math.pow(2,zoom)));
+}
+
+function lat2tile(lat,zoom) {
+    return (Math.floor((1-Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI)/2 *Math.pow(2,zoom)));
+}
+
+// WIP
