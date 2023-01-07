@@ -20,12 +20,13 @@ html {
 
 body {
     display: grid;
-    grid-template-rows: min-content min-content min-content 1fr;
+    grid-template-rows: min-content min-content min-content min-content 1fr;
     grid-template-areas:
         "header"
         "search-bar"
         "details"
-        "main";
+        "main"
+        "map";
     height: 100vh;
     background-color: #fcfcfc;
     margin: 0;
@@ -190,7 +191,8 @@ header {
 }
 
 #map {
-    height: 600px;
+    grid-area: map;
+    margin-top: 3rem;
 }
 
 @media only screen and (min-width: 1400px) {
