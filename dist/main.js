@@ -35294,17 +35294,44 @@ const createPageEl = function createHTMLPageElements(data) {
     // const map = L.map('map').setView([48.86, 2.32], 5);
     // const map = L.map('map').setView([25.15, 55.30], 4);
 
-    map.remove();
+    // map.remove();
 
-    const map = leaflet__WEBPACK_IMPORTED_MODULE_3___default().map('map').setView([data.lat, data.lon], 4);
+    const map = leaflet__WEBPACK_IMPORTED_MODULE_3___default().map('map').setView([data.lat, data.lon], 5);
 
-    // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    leaflet__WEBPACK_IMPORTED_MODULE_3___default().tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
-    // L.tileLayer('https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {mode: 'cors'}, {
-    // L.tileLayer(data.mapURL, {
+    // // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // L.tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
+    // // L.tileLayer('https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {mode: 'cors'}, {
+    // // L.tileLayer(data.mapURL, {
+    //     maxZoom: 19,
+    //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    // }).addTo(map);
+
+
+
+
+    var osm = leaflet__WEBPACK_IMPORTED_MODULE_3___default().tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+        attribution: '© OpenStreetMap'
+    });
+
+    var owm = leaflet__WEBPACK_IMPORTED_MODULE_3___default().tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
+        maxZoom: 19,
+        attribution: '© OpenWeatherMap'
+    });
+
+
+    osm.addTo(map);
+    owm.addTo(map)
+
+
+    // var map = L.map('map', {
+    //     center: [39.73, -104.99],
+    //     zoom: 10,
+    //     layers: [osm]
+    // });
+
+
+
 
     // WIP
 
