@@ -1,17 +1,12 @@
 import { fromUnixTime, format } from 'date-fns';
+import L from "leaflet";
 import createEl from './miscFn.js';
 import loadContent from '.';
 import getUserLocation from './geolocation';
 
-// WIP
-
-import L from "leaflet";
-
-// WIP
+const unitBtn = document.querySelector('#unit-btn');
 
 let map = null;
-
-const unitBtn = document.querySelector('#unit-btn');
 
 const createPageEl = function createHTMLPageElements(data) {
     const details = document.querySelector('.details');
@@ -66,65 +61,6 @@ const createPageEl = function createHTMLPageElements(data) {
     // MAIN - Forecast
     const forecastContainer = createEl('div', 'forecast-container', main);
 
-
-
-    // WIP
-
-    // const mapContainer = createEl('div', 'map-container', main);
-    // const map = createEl('img', 'map', mapContainer);
-
-    // map.src = 'http://tile.openweathermap.org/map/temp_new/1/1/0.png?appid=2c90294ffc8f3aba96a28d8de4977cd3';
-    // map.src = data.mapURL
-
-    // LAT LON
-    // var map = L.map("map").setView([51.505, -0.09], 13);
-    // const map = L.map('map').setView([48.86, 2.32], 5);
-    // const map = L.map('map').setView([25.15, 55.30], 4);
-
-    if (typeof map !== 'undefined' && map !== null) map.remove();
-
-    map = L.map('map').setView([data.lat, data.lon], 5);
-
-    // // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    // L.tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
-    // // L.tileLayer('https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {mode: 'cors'}, {
-    // // L.tileLayer(data.mapURL, {
-    //     maxZoom: 19,
-    //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    // }).addTo(map);
-
-
-
-
-    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-    });
-
-    var owm = L.tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
-        maxZoom: 19,
-        attribution: '© OpenWeatherMap'
-    });
-
-
-    osm.addTo(map);
-    owm.addTo(map)
-
-
-    // var map = L.map('map', {
-    //     center: [39.73, -104.99],
-    //     zoom: 10,
-    //     layers: [osm]
-    // });
-
-
-
-
-    // WIP
-
-
-
-
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
     humidityLabel.textContent = 'Humidity:';
@@ -169,6 +105,8 @@ const createPageEl = function createHTMLPageElements(data) {
         sunriseContent.textContent = format(new Date(sunriseCityLocalTime), 'h:mm bbbb')
         sunsetContent.textContent = format(new Date(sunsetCityLocalTime), 'h:mm bbbb');
     }
+
+    loadMap(data);
 }
 
 const switchUnits = function switchUnitsOfMeasurement() {
@@ -230,6 +168,22 @@ const cToF = function celsiusToFahrenheit(celsius) {
 
 const fToC = function fahrenheitToCelsius(fahrenheit) {
     return (fahrenheit - 32) * 5/9;
+}
+
+const loadMap = function loadMapWithLeaflet(data) {
+    if (typeof map !== 'undefined' && map !== null) map.remove();
+
+    map = L.map('map').setView([data.lat, data.lon], 6);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    L.tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
+        maxZoom: 19,
+        attribution: '© OpenWeatherMap'
+    }).addTo(map);
 }
 
 export { createPageEl as default, switchUnits };
