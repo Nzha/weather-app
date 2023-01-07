@@ -173,7 +173,7 @@ const fToC = function fahrenheitToCelsius(fahrenheit) {
 const loadMap = function loadMapWithLeaflet(data) {
     if (typeof map !== 'undefined' && map !== null) map.remove();
 
-    map = L.map('map').setView([data.lat, data.lon], 6);
+    map = L.map('map').setView([data.lat, data.lon], 5);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -184,6 +184,9 @@ const loadMap = function loadMapWithLeaflet(data) {
         maxZoom: 19,
         attribution: '© OpenWeatherMap'
     }).addTo(map);
+
+    let marker = L.marker([data.lat, data.lon]).addTo(map);
+    marker.bindPopup(data.search);
 }
 
 export { createPageEl as default, switchUnits };
