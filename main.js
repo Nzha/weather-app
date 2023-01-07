@@ -35388,7 +35388,7 @@ const fToC = function fahrenheitToCelsius(fahrenheit) {
 const loadMap = function loadMapWithLeaflet(data) {
     if (typeof map !== 'undefined' && map !== null) map.remove();
 
-    map = leaflet__WEBPACK_IMPORTED_MODULE_0___default().map('map').setView([data.lat, data.lon], 6);
+    map = leaflet__WEBPACK_IMPORTED_MODULE_0___default().map('map').setView([data.lat, data.lon], 5);
 
     leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -35399,6 +35399,9 @@ const loadMap = function loadMapWithLeaflet(data) {
         maxZoom: 19,
         attribution: '© OpenWeatherMap'
     }).addTo(map);
+
+    let marker = leaflet__WEBPACK_IMPORTED_MODULE_0___default().marker([data.lat, data.lon]).addTo(map);
+    marker.bindPopup(data.search);
 }
 
 
