@@ -35224,6 +35224,8 @@ __webpack_require__.r(__webpack_exports__);
 
 // WIP
 
+let map = null;
+
 const unitBtn = document.querySelector('#unit-btn');
 
 const createPageEl = function createHTMLPageElements(data) {
@@ -35294,9 +35296,9 @@ const createPageEl = function createHTMLPageElements(data) {
     // const map = L.map('map').setView([48.86, 2.32], 5);
     // const map = L.map('map').setView([25.15, 55.30], 4);
 
-    // map.remove();
+    if (typeof map !== 'undefined' && map !== null) map.remove();
 
-    const map = leaflet__WEBPACK_IMPORTED_MODULE_3___default().map('map').setView([data.lat, data.lon], 5);
+    map = leaflet__WEBPACK_IMPORTED_MODULE_3___default().map('map').setView([data.lat, data.lon], 5);
 
     // // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     // L.tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
