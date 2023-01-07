@@ -35388,17 +35388,38 @@ const fToC = function fahrenheitToCelsius(fahrenheit) {
 const loadMap = function loadMapWithLeaflet(data) {
     if (typeof map !== 'undefined' && map !== null) map.remove();
 
-    map = leaflet__WEBPACK_IMPORTED_MODULE_0___default().map('map').setView([data.lat, data.lon], 5);
+    // map = L.map('map').setView([data.lat, data.lon], 5);
 
-    leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    let osm = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap'
-    }).addTo(map);
+    })
 
-    leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
+    let owm_temp = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
         maxZoom: 19,
         attribution: '© OpenWeatherMap'
-    }).addTo(map);
+    })
+
+    let owm_pressure = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('http://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
+        maxZoom: 19,
+        attribution: '© OpenWeatherMap'
+    })
+
+    map = leaflet__WEBPACK_IMPORTED_MODULE_0___default().map('map', {
+        center: [data.lat, data.lon],
+        zoom: 5,
+        layers: [osm, owm_temp]
+    });
+
+    var baseMaps = {
+        "Temperature": owm_temp,
+        "Pressure": owm_pressure
+        // "Wind speed": owm,
+        // "Clouds": owm,
+        // "Global Precipitation": owm
+    };
+
+    var layerControl = leaflet__WEBPACK_IMPORTED_MODULE_0___default().control.layers(baseMaps).addTo(map);
 
     let marker = leaflet__WEBPACK_IMPORTED_MODULE_0___default().marker([data.lat, data.lon]).addTo(map);
     marker.bindPopup(data.search);
