@@ -35208,11 +35208,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/fromUnixTime/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
-/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
-/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _miscFn_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./miscFn.js */ "./src/miscFn.js");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! . */ "./src/index.js");
-/* harmony import */ var _geolocation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./geolocation */ "./src/geolocation.js");
+/* harmony import */ var _miscFn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./miscFn.js */ "./src/miscFn.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! . */ "./src/index.js");
+/* harmony import */ var _geolocation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./geolocation */ "./src/geolocation.js");
+/* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./map.js */ "./src/map.js");
 
 
 
@@ -35220,8 +35219,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const unitBtn = document.querySelector('#unit-btn');
-
-let map = null;
 
 const createPageEl = function createHTMLPageElements(data) {
     const details = document.querySelector('.details');
@@ -35235,46 +35232,46 @@ const createPageEl = function createHTMLPageElements(data) {
     main.innerHTML = '';
 
     // DETAILS
-    const windContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-container', details);
-    const windLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-label', windContainer);
-    const windContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-content', windContainer);
-    const windUnit = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'wind-unit', windContainer);
-    const humidityContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-container', details);
-    const humidityLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-label', humidityContainer);
-    const humidityContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'humidity-content', humidityContainer);
-    const sunriseContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunrise-container', details);
-    const sunriseLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunrise-label', sunriseContainer);
-    const sunriseContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunrise-content', sunriseContainer);
-    const sunsetContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunset-container', details);
-    const sunsetLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunset-label', sunsetContainer);
-    const sunsetContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'sunset-content', sunsetContainer);
-    const visibilityContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'visibility-container', details);
-    const visibilityLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'visibility-label', visibilityContainer);
-    const visibilityContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'visibility-content', visibilityContainer);
-    const pressureContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'pressure-container', details);
-    const pressureLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'pressure-label', pressureContainer);
-    const pressureContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'pressure-content', pressureContainer);
+    const windContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-container', details);
+    const windLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-label', windContainer);
+    const windContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-content', windContainer);
+    const windUnit = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'wind-unit', windContainer);
+    const humidityContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-container', details);
+    const humidityLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-label', humidityContainer);
+    const humidityContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'humidity-content', humidityContainer);
+    const sunriseContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-container', details);
+    const sunriseLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-label', sunriseContainer);
+    const sunriseContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunrise-content', sunriseContainer);
+    const sunsetContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-container', details);
+    const sunsetLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-label', sunsetContainer);
+    const sunsetContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sunset-content', sunsetContainer);
+    const visibilityContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-container', details);
+    const visibilityLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-label', visibilityContainer);
+    const visibilityContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'visibility-content', visibilityContainer);
+    const pressureContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-container', details);
+    const pressureLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-label', pressureContainer);
+    const pressureContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'pressure-content', pressureContainer);
 
     // MAIN - Current weather
-    const currentContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'current-container', main);
-    const icon = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('img', 'icon-content', currentContainer);
-    const summaryContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'summary-container', currentContainer);
-    const summaryTempDescContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'summaryTempDesc-container', summaryContainer);
-    const tempContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'temp-content', summaryTempDescContainer);
-    const mainContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'main-content', summaryTempDescContainer);
-    const summaryHighLowContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'summaryHighLow-container', summaryContainer);
-    const feelsLikeContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'feels-like-container', summaryHighLowContainer);
-    const feelsLikeLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'feels-like-label', feelsLikeContainer);
-    const feelsLikeContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'feels-like-content', feelsLikeContainer);
-    const lowTempContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'low-temp-container', summaryHighLowContainer);
-    const lowTempLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'low-temp-label', lowTempContainer);
-    const lowTempContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'low-temp-content', lowTempContainer);
-    const highTempContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'high-temp-container', summaryHighLowContainer);
-    const highTempLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'high-temp-label', highTempContainer);
-    const highTempContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'high-temp-content', highTempContainer);
+    const currentContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'current-container', main);
+    const icon = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('img', 'icon-content', currentContainer);
+    const summaryContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summary-container', currentContainer);
+    const summaryTempDescContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summaryTempDesc-container', summaryContainer);
+    const tempContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'temp-content', summaryTempDescContainer);
+    const mainContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'main-content', summaryTempDescContainer);
+    const summaryHighLowContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'summaryHighLow-container', summaryContainer);
+    const feelsLikeContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-container', summaryHighLowContainer);
+    const feelsLikeLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-label', feelsLikeContainer);
+    const feelsLikeContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'feels-like-content', feelsLikeContainer);
+    const lowTempContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-container', summaryHighLowContainer);
+    const lowTempLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-label', lowTempContainer);
+    const lowTempContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'low-temp-content', lowTempContainer);
+    const highTempContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-container', summaryHighLowContainer);
+    const highTempLabel = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-label', highTempContainer);
+    const highTempContent = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'high-temp-content', highTempContainer);
 
     // MAIN - Forecast
-    const forecastContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'forecast-container', main);
+    const forecastContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-container', main);
 
     windLabel.textContent = 'Wind:';
     windContent.textContent = data.wind;
@@ -35298,12 +35295,12 @@ const createPageEl = function createHTMLPageElements(data) {
     highTempContent.textContent = `${Math.round(data.tempMax)}°`;
 
     data.forecast.forEach(day => {
-        const forecastDailyContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'forecast-daily-container', forecastContainer);
-        const forecastDay = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'forecast-day', forecastDailyContainer);
-        const forecastIcon = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('img', 'forecast-icon', forecastDailyContainer);
-        const forecastHighLowContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'forecast-highlow-container', forecastDailyContainer);
-        const forecastHigh = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'forecast-high', forecastHighLowContainer);
-        const forecastLow = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'forecast-low', forecastHighLowContainer);
+        const forecastDailyContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-daily-container', forecastContainer);
+        const forecastDay = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-day', forecastDailyContainer);
+        const forecastIcon = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('img', 'forecast-icon', forecastDailyContainer);
+        const forecastHighLowContainer = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-highlow-container', forecastDailyContainer);
+        const forecastHigh = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-high', forecastHighLowContainer);
+        const forecastLow = (0,_miscFn_js__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'forecast-low', forecastHighLowContainer);
 
         forecastDay.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(new Date(day.key), 'E');
         forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon.slice(0, -1)}d.png`;
@@ -35321,7 +35318,7 @@ const createPageEl = function createHTMLPageElements(data) {
         sunsetContent.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(new Date(sunsetCityLocalTime), 'h:mm bbbb');
     }
 
-    loadMap(data);
+    (0,_map_js__WEBPACK_IMPORTED_MODULE_3__["default"])(data);
 }
 
 const switchUnits = function switchUnitsOfMeasurement() {
@@ -35367,11 +35364,11 @@ const addEventListeners = function addEventListeners() {
     const searchBtn = document.querySelector('.search-btn');
     const unitBtn = document.querySelector('#unit-btn');
 
-    locationBtn.addEventListener('click', _geolocation__WEBPACK_IMPORTED_MODULE_3__["default"]);
+    locationBtn.addEventListener('click', _geolocation__WEBPACK_IMPORTED_MODULE_2__["default"]);
     searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') (0,___WEBPACK_IMPORTED_MODULE_2__["default"])(searchInput.value);
+        if (e.key === 'Enter') (0,___WEBPACK_IMPORTED_MODULE_1__["default"])(searchInput.value);
     });
-    searchBtn.addEventListener('click', () => (0,___WEBPACK_IMPORTED_MODULE_2__["default"])(searchInput.value));
+    searchBtn.addEventListener('click', () => (0,___WEBPACK_IMPORTED_MODULE_1__["default"])(searchInput.value));
     unitBtn.addEventListener('click', switchUnits);
 }
 
@@ -35383,49 +35380,6 @@ const cToF = function celsiusToFahrenheit(celsius) {
 
 const fToC = function fahrenheitToCelsius(fahrenheit) {
     return (fahrenheit - 32) * 5/9;
-}
-
-const loadMap = function loadMapWithLeaflet(data) {
-    if (typeof map !== 'undefined' && map !== null) map.remove();
-
-    let osm = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-    })
-
-    let owm_temp = addLayer('temp_new');
-    let owm_pressure = addLayer('pressure_new');
-    let owm_wind = addLayer('wind_new');
-    let owm_clouds = addLayer('clouds_new');
-    let own_precipitation = addLayer('precipitation_new');
-
-    map = leaflet__WEBPACK_IMPORTED_MODULE_0___default().map('map', {
-        center: [data.lat, data.lon],
-        zoom: 5,
-        layers: [osm, owm_temp]
-    });
-
-    const baseMaps = {
-        "Temperature": owm_temp,
-        "Pressure": owm_pressure,
-        "Wind speed": owm_wind,
-        "Clouds": owm_clouds,
-        "Global Precipitation": own_precipitation
-    };
-
-    const layerControl = leaflet__WEBPACK_IMPORTED_MODULE_0___default().control.layers(baseMaps).addTo(map);
-
-    let marker = leaflet__WEBPACK_IMPORTED_MODULE_0___default().marker([data.lat, data.lon]).addTo(map);
-    marker.bindPopup(data.search);
-}
-
-const addLayer = function addLayerToMap(layer) {
-    let tileLayer= leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer(`http://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3`, {
-        maxZoom: 19,
-        attribution: '© OpenWeatherMap'
-    })
-
-    return tileLayer;
 }
 
 
@@ -35497,6 +35451,70 @@ const loadContent =  async function loadMainContent(search) {
 loadContent('Paris');
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
+
+/***/ }),
+
+/***/ "./src/map.js":
+/*!********************!*\
+  !*** ./src/map.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+let map = null;
+
+const loadMap = function loadMapWithLeaflet(data) {
+    if (typeof map !== 'undefined' && map !== null) map.remove();
+
+    let osm = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    })
+
+    let owm_temp = addLayer('temp_new');
+    let owm_pressure = addLayer('pressure_new');
+    let owm_wind = addLayer('wind_new');
+    let owm_clouds = addLayer('clouds_new');
+    let own_precipitation = addLayer('precipitation_new');
+
+    map = leaflet__WEBPACK_IMPORTED_MODULE_0___default().map('map', {
+        center: [data.lat, data.lon],
+        zoom: 5,
+        layers: [osm, owm_temp]
+    });
+
+    const baseMaps = {
+        "Temperature": owm_temp,
+        "Pressure": owm_pressure,
+        "Wind speed": owm_wind,
+        "Clouds": owm_clouds,
+        "Global Precipitation": own_precipitation
+    };
+
+    const layerControl = leaflet__WEBPACK_IMPORTED_MODULE_0___default().control.layers(baseMaps).addTo(map);
+
+    let marker = leaflet__WEBPACK_IMPORTED_MODULE_0___default().marker([data.lat, data.lon]).addTo(map);
+    marker.bindPopup(data.search);
+}
+
+const addLayer = function addLayerToMap(layer) {
+    let tileLayer= leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer(`http://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3`, {
+        maxZoom: 19,
+        attribution: '© OpenWeatherMap'
+    })
+
+    return tileLayer;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadMap);
 
 /***/ }),
 
