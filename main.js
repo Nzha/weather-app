@@ -35456,10 +35456,14 @@ const loadContent =  async function loadMainContent(search) {
     const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
     const data = await (0,_weatherData__WEBPACK_IMPORTED_MODULE_1__["default"])(search, currentUnit);
 
-    // In case of geolocation (no search), display data name instead of search
-    if (typeof search !== 'string') data.search = data.name;
-    
-    searchInput.value = `${data.search}, ${data.country}`;
+    let searchString;
+    // In case of geolocation (no search), display data name instead of data search
+    if (typeof search !== 'string') {
+        searchString = `${data.name}, ${data.country}`;
+    } else {
+        searchString = `${data.search}, ${data.country}`;
+    }
+    searchInput.value = searchString;
 
     (0,_DOM__WEBPACK_IMPORTED_MODULE_2__["default"])(data);
 }
@@ -35485,49 +35489,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
 
 
+const APIKey = '2c90294ffc8f3aba96a28d8de4977cd3'
+
 let map = null;
 
-const loadMap = function loadMapWithLeaflet(data) {
-    if (typeof map !== 'undefined' && map !== null) map.remove();
-
-    let osm = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-    })
-
-    let owm_temp = addLayer('temp_new');
-    let owm_pressure = addLayer('pressure_new');
-    let owm_wind = addLayer('wind_new');
-    let owm_clouds = addLayer('clouds_new');
-    let own_precipitation = addLayer('precipitation_new');
-
-    map = leaflet__WEBPACK_IMPORTED_MODULE_0___default().map('map', {
-        center: [data.lat, data.lon],
-        zoom: 5,
-        layers: [osm, owm_temp]
-    });
-
-    const baseMaps = {
-        "Temperature": owm_temp,
-        "Pressure": owm_pressure,
-        "Wind speed": owm_wind,
-        "Clouds": owm_clouds,
-        "Global Precipitation": own_precipitation
-    };
-
-    const layerControl = leaflet__WEBPACK_IMPORTED_MODULE_0___default().control.layers(baseMaps).addTo(map);
-
-    let marker = leaflet__WEBPACK_IMPORTED_MODULE_0___default().marker([data.lat, data.lon]).addTo(map);
-    marker.bindPopup(data.search);
-}
-
 const addLayer = function addLayerToMap(layer) {
-    let tileLayer= leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer(`http://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3`, {
+    const tileLayer= leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer(`http://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=${APIKey}`, {
         maxZoom: 19,
         attribution: '© OpenWeatherMap'
     })
 
     return tileLayer;
+}
+
+const loadMap = function loadMapWithLeaflet(data) {
+    if (typeof map !== 'undefined' && map !== null) map.remove();
+
+    const osm = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    })
+
+    const owmTemp = addLayer('temp_new');
+    const owmPressure = addLayer('pressure_new');
+    const owmWind = addLayer('wind_new');
+    const owmClouds = addLayer('clouds_new');
+    const ownPrecipitation = addLayer('precipitation_new');
+
+    map = leaflet__WEBPACK_IMPORTED_MODULE_0___default().map('map', {
+        center: [data.lat, data.lon],
+        zoom: 5,
+        layers: [osm, owmTemp]
+    });
+
+    const baseMaps = {
+        "Temperature": owmTemp,
+        "Pressure": owmPressure,
+        "Wind speed": owmWind,
+        "Clouds": owmClouds,
+        "Precipitation": ownPrecipitation
+    };
+
+    leaflet__WEBPACK_IMPORTED_MODULE_0___default().control.layers(baseMaps).addTo(map);
+
+    const marker = leaflet__WEBPACK_IMPORTED_MODULE_0___default().marker([data.lat, data.lon]).addTo(map);
+    marker.bindPopup(data.search);
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadMap);
