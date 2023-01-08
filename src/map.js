@@ -5,7 +5,7 @@ const APIKey = '2c90294ffc8f3aba96a28d8de4977cd3'
 let map = null;
 
 const addLayer = function addLayerToMap(layer) {
-    const tileLayer= L.tileLayer(`http://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=${APIKey}`, {
+    const tileLayer= L.tileLayer(`https://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=${APIKey}`, {
         maxZoom: 19,
         attribution: '© OpenWeatherMap'
     })
