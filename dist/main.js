@@ -35388,22 +35388,16 @@ const fToC = function fahrenheitToCelsius(fahrenheit) {
 const loadMap = function loadMapWithLeaflet(data) {
     if (typeof map !== 'undefined' && map !== null) map.remove();
 
-    // map = L.map('map').setView([data.lat, data.lon], 5);
-
     let osm = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap'
     })
 
-    let owm_temp = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
-        maxZoom: 19,
-        attribution: '© OpenWeatherMap'
-    })
-
-    let owm_pressure = leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer('http://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3', {
-        maxZoom: 19,
-        attribution: '© OpenWeatherMap'
-    })
+    let owm_temp = addLayer('temp_new');
+    let owm_pressure = addLayer('pressure_new');
+    let owm_wind = addLayer('wind_new');
+    let owm_clouds = addLayer('clouds_new');
+    let own_precipitation = addLayer('precipitation_new');
 
     map = leaflet__WEBPACK_IMPORTED_MODULE_0___default().map('map', {
         center: [data.lat, data.lon],
@@ -35411,18 +35405,27 @@ const loadMap = function loadMapWithLeaflet(data) {
         layers: [osm, owm_temp]
     });
 
-    var baseMaps = {
+    const baseMaps = {
         "Temperature": owm_temp,
-        "Pressure": owm_pressure
-        // "Wind speed": owm,
-        // "Clouds": owm,
-        // "Global Precipitation": owm
+        "Pressure": owm_pressure,
+        "Wind speed": owm_wind,
+        "Clouds": owm_clouds,
+        "Global Precipitation": own_precipitation
     };
 
-    var layerControl = leaflet__WEBPACK_IMPORTED_MODULE_0___default().control.layers(baseMaps).addTo(map);
+    const layerControl = leaflet__WEBPACK_IMPORTED_MODULE_0___default().control.layers(baseMaps).addTo(map);
 
     let marker = leaflet__WEBPACK_IMPORTED_MODULE_0___default().marker([data.lat, data.lon]).addTo(map);
     marker.bindPopup(data.search);
+}
+
+const addLayer = function addLayerToMap(layer) {
+    let tileLayer= leaflet__WEBPACK_IMPORTED_MODULE_0___default().tileLayer(`http://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=2c90294ffc8f3aba96a28d8de4977cd3`, {
+        maxZoom: 19,
+        attribution: '© OpenWeatherMap'
+    })
+
+    return tileLayer;
 }
 
 
