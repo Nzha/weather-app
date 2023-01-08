@@ -35560,7 +35560,7 @@ const APIKey = '2c90294ffc8f3aba96a28d8de4977cd3'
 let weather = {};
 
 const getCoords = async function getLatitudeAndLongitude(search) {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${APIKey}`, {mode: 'cors'});
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${APIKey}`, {mode: 'cors'});
     const geocode = await response.json();
     console.log(geocode);
 
