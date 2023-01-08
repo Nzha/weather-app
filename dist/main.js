@@ -35631,13 +35631,15 @@ const saveForecastData = function storeForecastDataInObject(data) {
 const getAndSaveData = async function getAndSaveWeatherData(search, units) {
     try {
         // If search is a string (i.e. city), get coordinates first, else use coordinates directly
-        const getCoordsData = (typeof search === 'string') ? await getCoords(search) : search;
+        const coords = (typeof search === 'string') ? await getCoords(search) : search;
 
-        const getCurrentWeatherData = await getCurrentWeather(getCoordsData, units);
-        const getForecastWeatherData = await getForecastWeather(getCoordsData, units);
-        const saveCurrentWeatherData = await saveCurrentData(getCurrentWeatherData);
-        const saveForecastWeatherData = await saveForecastData(getForecastWeatherData);
-        console.log(saveForecastWeatherData);
+        const [currentWeatherData, forecastWeatherData] = await Promise.all([
+            getCurrentWeather(coords, units),
+            getForecastWeather(coords, units)
+        ]);
+
+        const saveCurrentWeatherData = saveCurrentData(currentWeatherData);
+        const saveForecastWeatherData = saveForecastData(forecastWeatherData);
 
         return saveCurrentWeatherData;
     } catch(error) {
