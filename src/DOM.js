@@ -1,12 +1,29 @@
 import { fromUnixTime, format } from 'date-fns';
-import createEl from './miscFn.js';
 import loadContent from '.';
 import getUserLocation from './geolocation';
 import loadMap from './map.js';
 
 const unitBtn = document.querySelector('#unit-btn');
 
-const createPageEl = function createHTMLPageElements(data) {
+const createEl = function createDOMElement(type, className, parentEl) {
+    const element = document.createElement(type);
+    element.classList.add(className);
+
+    /**
+    * If parent element has been previously created via this function
+    * (e.g: const span3 = createEl2('span', 'span3', taskDescriptionDiv))
+    */
+    if (parentEl.element) {
+        parentEl.element.appendChild(element);
+    // (e.g: const span3 = document.createElement('span');)
+    } else {
+        parentEl.appendChild(element);
+    }
+
+    return element
+}
+
+const createPageEl = function createDOMPageElements(data) {
     const details = document.querySelector('.details');
     const main = document.querySelector('.main');
     const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
