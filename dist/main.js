@@ -35300,7 +35300,7 @@ const createPageEl = function createDOMPageElements(data) {
     pressureLabel.textContent = 'Pressure:';
     pressureContent.textContent = `${data.pressure} hPa`;
 
-    icon.src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
+    icon.src = `https://openweathermap.org/img/wn/${data.icon}@2x.png`;
     tempContent.textContent = `${Math.round(data.temp)}°`;
     mainContent.textContent = data.main;
     feelsLikeLabel.textContent = 'Feels Like:';
@@ -35319,7 +35319,7 @@ const createPageEl = function createDOMPageElements(data) {
         const forecastLow = createEl('div', 'forecast-low', forecastHighLowContainer);
 
         forecastDay.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(day.key), 'E');
-        forecastIcon.src = `http://openweathermap.org/img/wn/${day.value.icon.slice(0, -1)}d.png`;
+        forecastIcon.src = `https://openweathermap.org/img/wn/${day.value.icon.slice(0, -1)}d.png`;
         forecastHigh.textContent = `${Math.round(day.value.temp_max)}°`;
         forecastLow.textContent = `${Math.round(day.value.temp_min)}°`;
     });
