@@ -10,10 +10,14 @@ const loadContent =  async function loadMainContent(search) {
     const currentUnit = unitBtn.classList.contains('metric') ? 'metric' : 'imperial';
     const data = await getAndSaveWeatherData(search, currentUnit);
 
-    // In case of geolocation (no search), display data name instead of search
-    if (typeof search !== 'string') data.search = data.name;
-    
-    searchInput.value = `${data.search}, ${data.country}`;
+    let searchString;
+    // In case of geolocation (no search), display data name instead of data search
+    if (typeof search !== 'string') {
+        searchString = `${data.name}, ${data.country}`;
+    } else {
+        searchString = `${data.search}, ${data.country}`;
+    }
+    searchInput.value = searchString;
 
     createPageEl(data);
 }
